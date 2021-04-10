@@ -71,6 +71,10 @@ export default function Profile() {
                         </Form.Group>
 
                     </Form>
+
+                    <Button variant="primary" type="submit">
+                            Submit
+                    </Button>
                 </Col>
             </Row>
         </Container>
