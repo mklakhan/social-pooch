@@ -9,10 +9,6 @@ const petlikesSchema = new Schema ({
       date: {
         type: Date,
         default: Date.now()
-      },
-      pet: {
-        type: Schema.Types.ObjectId,
-        ref: 'Pet'
       }
 })
 

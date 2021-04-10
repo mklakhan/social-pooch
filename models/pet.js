@@ -23,10 +23,10 @@ const petSchema = new Schema({
       petPic: {
         type: String,        
       },
-      user: {
+      likes: [{
         type: Schema.Types.ObjectId,
-        ref: 'User'
-      }
+        ref: 'Likes'
+      }]     
 })
 
 const Pet = mongoose.model("Pet", petSchema)
