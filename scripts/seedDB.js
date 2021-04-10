@@ -61,17 +61,7 @@ const runSeeder = async () => {
       try {
         const petUpd = await db.Pet.findByIdAndUpdate(petIds[0],       
             {$push: { likes: likeResult[0]._id }}, 
-            {new: true}
-            //{$push: { likes: likeResult}}, 
-            //{likes: likeResult._id},
-            // function (err, result) {
-            //     if (err) {
-            //         console.log("err connecting like", err)
-            //     }
-            //     else {
-            //         console.log("added liked record", result);
-            //     }
-            // }
+            {new: true}            
             )
         console.log(petUpd)
       }
