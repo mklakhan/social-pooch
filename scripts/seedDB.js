@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const db = require("../models");
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/socialpooch",
-{ useNewUrlParser: true });
+{ useNewUrlParser: true, useFindAndModify: false});
 
 const userSeed = [{ 
     username: "admin",
@@ -38,7 +38,7 @@ const runSeeder = async () => {
       await db.Likes.remove({})
       console.log("remove completed")
       const result = await db.Pet.insertMany(petSeed, { raw: true })
-      console.log("insert many");
+      console.log("insert many", result);
       const petIds = result.map(pet => pet._id)
       const finalUserData = {
         ...userSeed,
@@ -47,6 +47,38 @@ const runSeeder = async () => {
       console.log("final user", finalUserData)
       const user = await db.User.create(finalUserData)
       //await db.Pet.update({}, { user: user._id })
+
+      console.log("creating like record")
+      const likeResult = await db.Likes.insertMany(likeSeed, { raw: true })
+      console.log("like record", likeResult);
+
+    //   console.log("like Result", likeResult)
+    //   const likeArray = [];
+    //   likeArray.push(likeResult._id)
+     
+      console.log("pet ids", petIds)
+
+      try {
+        const petUpd = await db.Pet.findByIdAndUpdate(petIds[0],       
+            {$push: { likes: likeResult[0]._id }}, 
+            {new: true}
+            //{$push: { likes: likeResult}}, 
+            //{likes: likeResult._id},
+            // function (err, result) {
+            //     if (err) {
+            //         console.log("err connecting like", err)
+            //     }
+            //     else {
+            //         console.log("added liked record", result);
+            //     }
+            // }
+            )
+        console.log(petUpd)
+      }
+      catch(err){
+          console.log(err)
+      }
+
       console.log("completed seeding")
     } catch(err) {
         console.log("error in seeder", err)
