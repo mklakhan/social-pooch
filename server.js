@@ -5,7 +5,7 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost//socialpooch");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/socialpooch");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
