@@ -14,13 +14,15 @@ export default function FindPetFriends() {
             <ListGroup className="list-group-flush">
                 <ListGroupItem>Chicago, IL</ListGroupItem>
                 <ListGroupItem>Male</ListGroupItem>
-                <ListGroupItem>2 Years Old</ListGroupItem>
+                <ListGroupItem>2 Yers</ListGroupItem>
             </ListGroup>
             <Card.Body>
                 <Card.Link href="#">Dislike</Card.Link>
                 <Card.Link href="#">Like</Card.Link>
             </Card.Body>
         </Card>
+
+        
     )
 }
 
