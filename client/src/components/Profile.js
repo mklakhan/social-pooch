@@ -1,35 +1,81 @@
 import React from 'react'
+import {Button, Container, Row, Col, Form} from 'react-bootstrap'
 
 export default function Profile() {
     return (
-        <div>
-            <div>
-                <label for="name"> Name </label>
-                <input type="text" name="name" id="name" /><br/>
-                
-                <label for="birthday"> Birthday </label>
-                <input type="text" name="birthday" id="birthday" /><br/>
+        <Container>
+            <Row>
+                <Col md={{ span: 6, offset: 3 }}>
+                    <Form>
+                        <Form.Group controlId="exampleForm.ControlInput1">
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control type="input" placeholder="" />
+                        </Form.Group>
 
-                <label for="zipcode"> Zipcode </label>
-                <input type="text" name="zipcode" id="zipcode" /><br/>
+                        <Form.Group controlId="exampleForm.ControlInput2">
+                            <Form.Label>Zipcode</Form.Label>
+                            <Form.Control type="input" placeholder="" />
+                        </Form.Group>
 
-                <label for="gender"> Gender </label>
-                <input type="text" name="gender" id="gender" /><br/>
+                        <Form.Group controlId="exampleForm.ControlInput3">
+                            <Form.Label>Birthday</Form.Label>
+                            <Form.Control type="input" placeholder="" />
+                        </Form.Group>
 
-                <label for="pettype"> Type of Pet </label>
-                <input type="text" name="pettype" id="pettype" /><br/>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Gender</Form.Label>
+                            <Form.Control as="select">
+                                <option>Female</option>
+                                <option>Male</option>
+                                <option>Unknown</option>
+                            </Form.Control>
+                        </Form.Group>
 
-                <label for="temperment"> Temperment </label>
-                <input type="text" name="temperment" id="temperment" /><br/>
+                        <Form.Group controlId="exampleForm.ControlSelect2">
+                            <Form.Label>Pet Type</Form.Label>
+                            <Form.Control as="select">
+                                <option>Bird</option>
+                                <option>Cat</option>
+                                <option>Dog</option>
+                                <option>Fish</option>
+                                <option>Goat</option>
+                                <option>Guinea Pig</option>
+                                <option>Hamster</option>
+                                <option>Mouse</option>
+                                <option>Rabbit</option>
+                                <option>Snake</option>
+                                <option>Turtle</option>
+                                <option>Other</option>
+                            </Form.Control>
+                        </Form.Group>
 
-                <label for="playdate"> Ideal Playdate </label>
-                <input type="text" name="playdate" id="playdate" /><br/>
+                        <Form.Group controlId="exampleForm.ControlSelect2">
+                            <Form.Label>Temperment</Form.Label>
+                            <Form.Control as="select" multiple>
+                                <option>Playful</option>
+                                <option>Shy</option>
+                                <option>Energetic</option>
+                                <option>Friendly</option>
+                                <option>Aggressive</option>
+                                <option>Neutral</option>
+                            </Form.Control>
+                        </Form.Group>
 
-                <label for="profilepic"> Upload a profile pic </label>
-                <input type="text" name="profilepic" id="profilepic" /><br/>
+                        <Form.Group controlId="exampleForm.ControlTextarea1">
+                            <Form.Label>Ideal Playdate</Form.Label>
+                            <Form.Control as="textarea" rows={3} />
+                        </Form.Group>
 
-                <button>Save</button>
-            </div>
-        </div>
+                        <Form.Group>
+                            <Form.File id="exampleFormControlFile1" label="Upload a Profile Picture" />
+                        </Form.Group>
+
+                    </Form>
+                </Col>
+            </Row>
+        </Container>
     )
 }
+
+
+
