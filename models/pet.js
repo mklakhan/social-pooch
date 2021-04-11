@@ -17,6 +17,9 @@ const petSchema = new Schema({
       temperment: {
         type: String,        
       },
+      playdate: {
+        type: String,        
+      },
       zipcode: {
         type: Number,        
       },

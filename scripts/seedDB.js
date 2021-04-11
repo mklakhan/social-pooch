@@ -12,15 +12,19 @@ const userSeed = [{
 
 const petSeed = [{
         pet_name: "Tiger",
-        species: "Cat",
+        species: "Dog",
         gender: "Male",
-        temperment: "needs pets"
+        temperment: "Very needey, needs pets",
+        playdate: "I enjoy playdates at the park with my friends!",
+        zipcode: "60016"
     },
     {
         pet_name: "Chloe",
-        species: "Cat",
+        species: "Dog",
         gender: "Female",
-        temperment: "gentle"
+        temperment: "Gentle and shy",
+        playdate: "I love to swim and chase balls!",
+        zipcode: "60004"
     }
 ]
 
