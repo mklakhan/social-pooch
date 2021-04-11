@@ -6,14 +6,13 @@ import API from "../utils/API.js"
 // .then(response => setPets(response.data))
 export default function FindPetFriends() {
 
-    const[pets, setPets] = useState([])
+    const [pets, setPets] = useState([])
 
     useEffect(() => {
-        API.getPets()            
-            .then(function(response) {
-                setPets(...response.data);
+        API.getPets()
+            .then(function (response) {
+                setPets(response.data);
                 console.log(response.data);
-                console.log(pets);
             })
             .catch(err => console.log(err))
     }, [])
@@ -38,6 +37,15 @@ export default function FindPetFriends() {
                 <Card.Link href="#">Dislike</Card.Link>
                 <Card.Link href="#">Like</Card.Link>
             </Card.Body>
+            <div>
+                <ul>
+                    {pets.map(pet => (
+                        <li key={pet._id} >{pet.pet_name} {pet.gender} {pet.species}
+                        </li>
+                    ))
+                    }
+                </ul>
+            </div>
         </Card>
 
 
