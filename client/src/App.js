@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,6 +17,7 @@ import Profile from "./components/Profile";
 
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   return (
     <div className="App">
       <main>
@@ -25,8 +26,12 @@ function App() {
             <Navbar bg="primary" variant="dark">
               <Navbar.Brand href="/">Social Pooch</Navbar.Brand>
               <Nav className="mr-auto">
-                <Nav.Link href="/">Login</Nav.Link>
-                <Nav.Link href="/">Logout</Nav.Link>
+              {isLoggedIn
+                ? <Nav.Link href="/">Logout</Nav.Link>
+                :<Nav.Link href="/">Login</Nav.Link>
+              }
+                {/* <Nav.Link href="/">Login</Nav.Link>
+                <Nav.Link href="/">Logout</Nav.Link> */}
                 <Nav.Link href="/profile">My Profile</Nav.Link>
                 <Nav.Link href="/newaccount">New Account</Nav.Link>
                 <Nav.Link href="/findpetfriends">Find Pet Friends</Nav.Link>

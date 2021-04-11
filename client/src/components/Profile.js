@@ -1,30 +1,78 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Button, Container, Row, Col, Form} from 'react-bootstrap'
 
 export default function Profile() {
+    const [name, setName] = useState("")
+    const [zipcode, setZipcode] = useState("")
+    const [birthday, setBirthday] = useState("")
+    const [gender, setGender] = useState("")
+    const [petType, setPetType] = useState("")
+    const [temperment, setTemperment] = useState("")
+    const [idealPlaydate, setIdealPlaydate] = useState("")
+
+    const handleChange = (evt) => {
+        evt.prevenDefault();
+        
+        switch (evt.target.name) {
+            case "Name":
+                setName(evt.target.value)
+                break;
+        
+            case "zipcode":
+                setZipcode(evt.target.value)
+                break;
+
+            case "birthday":
+                setBirthday(evt.target.value)
+                break;
+        
+            case "gender":
+                setGender(evt.target.value)
+                break;
+
+            case "pet_type":
+                setPetType(evt.target.value)
+                break;
+        
+            case "temperment":
+                setTemperment(evt.target.value)
+                break;
+            
+            case "ideal_playdate":
+                setIdealPlaydate(evt.target.value)
+                break;
+            default:
+                break;
+        }
+     }
+
     return (
         <Container>
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
-                    <Form>
+                    <Form className="mt-5 mb-5">
+                        <Form.Group>
+                            <Form.File id="exampleFormControlFile1" label="Upload a Profile Picture" />
+                        </Form.Group>
+
                         <Form.Group controlId="exampleForm.ControlInput1">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control type="input" placeholder="" />
+                            <Form.Control name="name" type="input" placeholder="" onChange={handleChange} />
                         </Form.Group>
 
                         <Form.Group controlId="exampleForm.ControlInput2">
                             <Form.Label>Zipcode</Form.Label>
-                            <Form.Control type="input" placeholder="" />
+                            <Form.Control name="zipcode" type="number" placeholder="" onChange={handleChange} />
                         </Form.Group>
 
                         <Form.Group controlId="exampleForm.ControlInput3">
                             <Form.Label>Birthday</Form.Label>
-                            <Form.Control type="input" placeholder="" />
+                            <Form.Control name="birthday" type="date" placeholder="" onChange={handleChange} />
                         </Form.Group>
 
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Gender</Form.Label>
-                            <Form.Control as="select">
+                            <Form.Control name="gender" as="select" onChange={handleChange}>
                                 <option>Female</option>
                                 <option>Male</option>
                                 <option>Unknown</option>
@@ -33,7 +81,7 @@ export default function Profile() {
 
                         <Form.Group controlId="exampleForm.ControlSelect2">
                             <Form.Label>Pet Type</Form.Label>
-                            <Form.Control as="select">
+                            <Form.Control name="pet_type" as="select" onChange={handleChange}>
                                 <option>Bird</option>
                                 <option>Cat</option>
                                 <option>Dog</option>
@@ -49,9 +97,9 @@ export default function Profile() {
                             </Form.Control>
                         </Form.Group>
 
-                        <Form.Group controlId="exampleForm.ControlSelect2">
+                        <Form.Group controlId="exampleForm.ControlSelect2" >
                             <Form.Label>Temperment</Form.Label>
-                            <Form.Control as="select" multiple>
+                            <Form.Control name="temperment" as="select" multiple onChange={handleChange}>
                                 <option>Playful</option>
                                 <option>Shy</option>
                                 <option>Energetic</option>
@@ -63,23 +111,18 @@ export default function Profile() {
 
                         <Form.Group controlId="exampleForm.ControlTextarea1">
                             <Form.Label>Ideal Playdate</Form.Label>
-                            <Form.Control as="textarea" rows={3} />
+                            <Form.Control name="ideal_playdate" as="textarea" rows={3} onChange={handleChange}/>
                         </Form.Group>
 
-                        <Form.Group>
-                            <Form.File id="exampleFormControlFile1" label="Upload a Profile Picture" />
-                        </Form.Group>
+                        <Button variant="primary" type="submit">
+                            Submit
+                        </Button>
 
                     </Form>
 
-                    <Button variant="primary" type="submit">
-                            Submit
-                    </Button>
                 </Col>
             </Row>
         </Container>
     )
 }
-
-
 
