@@ -3,17 +3,18 @@ const Schema = mongoose.Schema
 
 const userSchema = new Schema({
   username: {
-    type: String,
-    required: "A username is required"
+    type: String,    
   },
   password: {
-      type: String,
-      required: "Password is required"
+      type: String,      
   },
   email: {
-      type: String,
-      required: "Email is required"
-  }
+      type: String,     
+  },
+  pet: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Pet'
+  }]
 //   drawings: [
 //     {
 //       type: Schema.Types.ObjectId,
