@@ -2,8 +2,8 @@ const db = require('../models')
 
 
 module.exports = {
-    createLikes: function(req, res) {
-      db.Likes.create(req.body)
+    createPet: function(req, res) {
+      db.Pet.create(req.body)
         .then(petData => {
           res.json(petData)
         })
@@ -12,8 +12,19 @@ module.exports = {
           res.status(500).send()
         })
     },
-    getLikes: function(req, res) {
-        db.Likes.find({})
+    getPet: function(req, res) {
+        const { id } = req.params
+        db.Pet.find({ id: id })          
+          .then(petData => {
+            res.json(petData)
+          })
+          .catch(err => {
+            console.log(err)
+            res.status(500).send()
+          })
+      },
+      getPets: function(req, res) {
+        db.Pet.find({})
           .sort({ date: -1 })
           .then(petData => {
             res.json(petData)

@@ -5,9 +5,16 @@ const petController = require("../controllers/petController.js")
 router.route("/api/users/:id")
     .get(userController.getUser)
 
-router.route("/api/likes")    
-    .get(petController.getLikes)
-    .post(petController.createLikes)
+// router.route("/api/likes")    
+//     .get(petController.getLikes)
+//     .post(petController.createLikes)
+
+    router.route("/api/pet")    
+    .get(petController.getPet)
+    .post(petController.createPet)    
+
+    router.route("/api/pets")    
+    .get(petController.getPets)
     
 
 
