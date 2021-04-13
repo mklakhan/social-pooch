@@ -3,12 +3,15 @@
 import React from 'react'
 import {Button, Container, Row, Col, Form} from 'react-bootstrap'
 
+
 export default function NewAccount() {
+   
+    
     return (
         <Container>
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
-                    <Form>
+                    <Form >
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control type="email" placeholder="Enter email" />
@@ -22,7 +25,7 @@ export default function NewAccount() {
                             <Form.Control type="password" placeholder="Password" />
                         </Form.Group>
                         
-                        <Button variant="primary" type="submit">
+                        <Button variant="primary">
                             Submit
                     </Button>
                     </Form>
