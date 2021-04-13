@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
 import {Button, Container, Row, Col, Form} from 'react-bootstrap'
+import { useHistory } from 'react-router-dom'
+import API from "../utils/API.js"
 
 export default function Profile() {
+    
     const [name, setName] = useState("")
     const [zipcode, setZipcode] = useState("")
     const [birthday, setBirthday] = useState("")
@@ -11,7 +14,7 @@ export default function Profile() {
     const [idealPlaydate, setIdealPlaydate] = useState("")
 
     const handleChange = (evt) => {
-        evt.prevenDefault();
+        //evt.prevenDefault();
         
         switch (evt.target.name) {
             case "Name":
@@ -46,11 +49,46 @@ export default function Profile() {
         }
      }
 
+     const history = useHistory()
+
+     const[form, setForm] = useState({
+         id: "9"
+     })
+ 
+     // const handleSubmit = event => {  
+     //     event.prevenDefault;  
+     //     alert('A name was submitted: ');    
+     // }
+     function handleSubmit(e) {
+         e.preventDefault();
+         console.log('form submit');
+         save();
+       }
+ 
+ 
+     const save = () => {
+ 
+         console.log("in save")
+         const postData = {
+           ...form
+           //drawing: canvasRef.current.getSaveData()
+         }
+         console.log("post data", postData);
+ 
+         API.savePet(postData)
+           .then(function (response) 
+             {
+                 console.log("savePet response", response)
+                 this.history.push("/FindPetFriends.js")
+             })
+           .catch(err => console.log(err))
+       }
+
     return (
         <Container>
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
-                    <Form className="mt-5 mb-5">
+                    <Form className="mt-5 mb-5" onSubmit={handleSubmit}>
                         <Form.Group>
                             <Form.File id="exampleFormControlFile1" label="Upload a Profile Picture" />
                         </Form.Group>
