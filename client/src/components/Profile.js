@@ -9,11 +9,21 @@ export default function Profile() {
     const [petType, setPetType] = useState("")
     const [temperment, setTemperment] = useState("")
     const [idealPlaydate, setIdealPlaydate] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
 
     const handleChange = (evt) => {
-        evt.prevenDefault();
+        evt.preventDefault();
         
         switch (evt.target.name) {
+            case "email":
+                setEmail(evt.target.value)
+                break;
+
+            case "password":
+                setPassword(evt.target.value)
+                break;
+            
             case "Name":
                 setName(evt.target.value)
                 break;
@@ -46,6 +56,23 @@ export default function Profile() {
         }
      }
 
+    const handleSubmit = (evt) => {
+        evt.preventDefault()
+        let profile = {
+            email,
+            password,
+            name,
+            zipcode,
+            birthday,
+            gender,
+            petType,
+            temperment,
+            idealPlaydate
+        } 
+        
+        console.log('profile: ', profile);
+    }
+    
     return (
         <Container>
             <Row>
@@ -54,7 +81,7 @@ export default function Profile() {
                         
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" />
+                            <Form.Control name="email" type="email" placeholder="Enter email" onChange={handleChange}/>
                             <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
                         </Form.Text>
@@ -62,7 +89,7 @@ export default function Profile() {
 
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Control name="password" type="password" placeholder="Password" onChange={handleChange}/>
                         </Form.Group>
                         
                         <Form.Group>
@@ -111,7 +138,7 @@ export default function Profile() {
                             </Form.Control>
                         </Form.Group>
 
-                        <Form.Group controlId="exampleForm.ControlSelect2" >
+                        <Form.Group controlId="exampleForm.ControlSelect3" >
                             <Form.Label>Temperment</Form.Label>
                             <Form.Control name="temperment" as="select" multiple onChange={handleChange}>
                                 <option>Playful</option>
@@ -128,7 +155,7 @@ export default function Profile() {
                             <Form.Control name="ideal_playdate" as="textarea" rows={3} onChange={handleChange}/>
                         </Form.Group>
 
-                        <Button variant="primary" type="submit">
+                        <Button variant="primary" type="submit" onClick={handleSubmit}>
                             Submit
                         </Button>
 

@@ -1,4 +1,4 @@
-//moved this to the profile.js - Remove from navigation//
+//moved this to the profile.js - Remove from navigation and delete this when app polished//
 
 import React from 'react'
 import {Button, Container, Row, Col, Form} from 'react-bootstrap'

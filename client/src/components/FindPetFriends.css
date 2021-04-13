@@ -1,0 +1,9 @@
+.findPetFriends {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin: 10px 15px 15px 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+ 
+}
