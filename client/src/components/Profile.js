@@ -1,7 +1,11 @@
 import React, {useState} from 'react'
 import {Button, Container, Row, Col, Form} from 'react-bootstrap'
+import { useHistory } from 'react-router-dom'
+import API from "../utils/API.js"
 
 export default function Profile() {
+    const history = useHistory()
+
     const [name, setName] = useState("")
     const [zipcode, setZipcode] = useState("")
     const [birthday, setBirthday] = useState("")
@@ -12,7 +16,14 @@ export default function Profile() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    const [profileSettings, setProfileSettings] = useState({
+        gender: "Female",
+        species: "Dog",
+        pet_owner: "9"
+    })
+
     const handleChange = (evt) => {
+<<<<<<< HEAD
         evt.preventDefault();
         
         switch (evt.target.name) {
@@ -24,6 +35,16 @@ export default function Profile() {
                 setPassword(evt.target.value)
                 break;
             
+=======
+
+        setProfileSettings({
+            ...profileSettings,
+            [evt.target.name]: evt.target.value
+          })
+       
+        
+        switch (name) {
+>>>>>>> f194d715087572f32b50ca0a75047f538ec945ec
             case "Name":
                 setName(evt.target.value)
                 break;
@@ -54,7 +75,30 @@ export default function Profile() {
             default:
                 break;
         }
-     }
+     }     
+ 
+     function handleSubmit(e) {
+         e.preventDefault();
+         console.log('form submit');
+         save();
+       }
+ 
+ 
+     const save = () => { 
+         console.log("in save")
+         const postData = {
+           ...profileSettings          
+         }
+         console.log("post data", postData);
+ 
+         API.savePet(postData)
+           .then(function (response) 
+             {
+                 console.log("savePet response", response)
+                 history.push("/findpetfriends")
+             })
+           .catch(err => console.log(err))
+       }
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
@@ -77,6 +121,7 @@ export default function Profile() {
         <Container>
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
+<<<<<<< HEAD
                     <Form className="mt-5 mb-5">
                         
                         <Form.Group controlId="formBasicEmail">
@@ -92,13 +137,16 @@ export default function Profile() {
                             <Form.Control name="password" type="password" placeholder="Password" onChange={handleChange}/>
                         </Form.Group>
                         
+=======
+                    <Form className="mt-5 mb-5" onSubmit={handleSubmit}>
+>>>>>>> f194d715087572f32b50ca0a75047f538ec945ec
                         <Form.Group>
                             <Form.File id="exampleFormControlFile1" label="Upload a Profile Picture" />
                         </Form.Group>
 
                         <Form.Group controlId="exampleForm.ControlInput1">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control name="name" type="input" placeholder="" onChange={handleChange} />
+                            <Form.Control name="pet_name" type="input" placeholder="" onChange={handleChange} />
                         </Form.Group>
 
                         <Form.Group controlId="exampleForm.ControlInput2">
@@ -113,7 +161,7 @@ export default function Profile() {
 
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Gender</Form.Label>
-                            <Form.Control name="gender" as="select" onChange={handleChange}>
+                            <Form.Control name="gender" as="select" onChange={handleChange} value={profileSettings.gender}>
                                 <option>Female</option>
                                 <option>Male</option>
                                 <option>Unknown</option>
@@ -122,7 +170,7 @@ export default function Profile() {
 
                         <Form.Group controlId="exampleForm.ControlSelect2">
                             <Form.Label>Pet Type</Form.Label>
-                            <Form.Control name="pet_type" as="select" onChange={handleChange}>
+                            <Form.Control name="species" as="select" onChange={handleChange} value={profileSettings.species}>
                                 <option>Bird</option>
                                 <option>Cat</option>
                                 <option>Dog</option>

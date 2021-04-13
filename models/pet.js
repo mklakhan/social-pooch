@@ -26,6 +26,9 @@ const petSchema = new Schema({
       petPic: {
         type: String,        
       },
+      pet_owner: {
+        type: String
+      },
       likes: [{
         type: Schema.Types.ObjectId,
         ref: 'Likes'
