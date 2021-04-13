@@ -13,10 +13,20 @@ export default function Profile() {
     const [temperment, setTemperment] = useState("")
     const [idealPlaydate, setIdealPlaydate] = useState("")
 
+    const [profileSettings, setProfileSettings] = useState({})
+
     const handleChange = (evt) => {
-        //evt.prevenDefault();
+        console.log("handleChage ", evt.target.name)
+        console.log("handleChage ", evt.target.value)
+
+        setProfileSettings({
+            ...profileSettings,
+            [evt.target.name]: evt.target.value,
+            id: 9
+          })
+       
         
-        switch (evt.target.name) {
+        switch (name) {
             case "Name":
                 setName(evt.target.value)
                 break;
@@ -55,10 +65,6 @@ export default function Profile() {
          id: "9"
      })
  
-     // const handleSubmit = event => {  
-     //     event.prevenDefault;  
-     //     alert('A name was submitted: ');    
-     // }
      function handleSubmit(e) {
          e.preventDefault();
          console.log('form submit');
@@ -70,7 +76,7 @@ export default function Profile() {
  
          console.log("in save")
          const postData = {
-           ...form
+           ...profileSettings
            //drawing: canvasRef.current.getSaveData()
          }
          console.log("post data", postData);
@@ -95,7 +101,7 @@ export default function Profile() {
 
                         <Form.Group controlId="exampleForm.ControlInput1">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control name="name" type="input" placeholder="" onChange={handleChange} />
+                            <Form.Control name="pet_name" type="input" placeholder="" onChange={handleChange} />
                         </Form.Group>
 
                         <Form.Group controlId="exampleForm.ControlInput2">
@@ -110,7 +116,7 @@ export default function Profile() {
 
                         <Form.Group controlId="exampleForm.ControlSelect1">
                             <Form.Label>Gender</Form.Label>
-                            <Form.Control name="gender" as="select" onChange={handleChange}>
+                            <Form.Control name="gender" as="select" onChange={handleChange} value={profileSettings.gender}>
                                 <option>Female</option>
                                 <option>Male</option>
                                 <option>Unknown</option>
@@ -119,7 +125,7 @@ export default function Profile() {
 
                         <Form.Group controlId="exampleForm.ControlSelect2">
                             <Form.Label>Pet Type</Form.Label>
-                            <Form.Control name="pet_type" as="select" onChange={handleChange}>
+                            <Form.Control name="species" as="select" onChange={handleChange} value={profileSettings.species}>
                                 <option>Bird</option>
                                 <option>Cat</option>
                                 <option>Dog</option>
