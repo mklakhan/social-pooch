@@ -4,7 +4,8 @@ import { useHistory } from 'react-router-dom'
 import API from "../utils/API.js"
 
 export default function Profile() {
-    
+    const history = useHistory()
+
     const [name, setName] = useState("")
     const [zipcode, setZipcode] = useState("")
     const [birthday, setBirthday] = useState("")
@@ -22,7 +23,7 @@ export default function Profile() {
         setProfileSettings({
             ...profileSettings,
             [evt.target.name]: evt.target.value,
-            id: 9
+            pet_owner: "9"
           })
        
         
@@ -57,13 +58,7 @@ export default function Profile() {
             default:
                 break;
         }
-     }
-
-     const history = useHistory()
-
-     const[form, setForm] = useState({
-         id: "9"
-     })
+     }     
  
      function handleSubmit(e) {
          e.preventDefault();
@@ -72,12 +67,10 @@ export default function Profile() {
        }
  
  
-     const save = () => {
- 
+     const save = () => { 
          console.log("in save")
          const postData = {
-           ...profileSettings
-           //drawing: canvasRef.current.getSaveData()
+           ...profileSettings          
          }
          console.log("post data", postData);
  
@@ -85,7 +78,7 @@ export default function Profile() {
            .then(function (response) 
              {
                  console.log("savePet response", response)
-                 this.history.push("/FindPetFriends.js")
+                 history.push("/findpetfriends")
              })
            .catch(err => console.log(err))
        }
