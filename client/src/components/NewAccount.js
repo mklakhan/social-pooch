@@ -1,3 +1,5 @@
+//moved this to the profile.js - Remove from navigation//
+
 import React from 'react'
 import {Button, Container, Row, Col, Form} from 'react-bootstrap'
 
