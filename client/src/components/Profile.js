@@ -16,17 +16,15 @@ export default function Profile() {
 
     const [profileSettings, setProfileSettings] = useState({
         gender: "Female",
-        species: "Dog"
+        species: "Dog",
+        pet_owner: "9"
     })
 
     const handleChange = (evt) => {
-        console.log("handleChage ", evt.target.name)
-        console.log("handleChage ", evt.target.value)
 
         setProfileSettings({
             ...profileSettings,
-            [evt.target.name]: evt.target.value,
-            pet_owner: "9"
+            [evt.target.name]: evt.target.value
           })
        
         
