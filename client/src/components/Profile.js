@@ -14,7 +14,10 @@ export default function Profile() {
     const [temperment, setTemperment] = useState("")
     const [idealPlaydate, setIdealPlaydate] = useState("")
 
-    const [profileSettings, setProfileSettings] = useState({})
+    const [profileSettings, setProfileSettings] = useState({
+        gender: "Female",
+        species: "Dog"
+    })
 
     const handleChange = (evt) => {
         console.log("handleChage ", evt.target.name)
