@@ -11,7 +11,7 @@ export default function Profile() {
     const [idealPlaydate, setIdealPlaydate] = useState("")
 
     const handleChange = (evt) => {
-        evt.prevenDefault();
+        // evt.prevenDefault();
         
         switch (evt.target.name) {
             case "Name":
@@ -125,4 +125,3 @@ export default function Profile() {
         </Container>
     )
 }
-
