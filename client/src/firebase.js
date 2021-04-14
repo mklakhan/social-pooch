@@ -3,16 +3,17 @@ import "firebase/auth"
 
 const firebaseConfig = firebase.initializeApp({
 
-    apiKey: "AIzaSyCXYPhEAT9_5Z0WzHHHtERuROmKkkhLMz0",
-    authDomain: "social-pooch-production.firebaseapp.com",
-    projectId: "social-pooch-production",
-    storageBucket: "social-pooch-production.appspot.com",
-    messagingSenderId: "944905579733",
-    appId: "1:944905579733:web:1f5a908ff7f3e8eabd465c",
-    measurementId: "G-388FE7DWMJ"
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket:process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId:process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 
 
 })
 
+console.log(process.env)
 export const auth = firebaseConfig.auth()
 export default firebaseConfig

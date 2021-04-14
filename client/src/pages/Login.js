@@ -20,7 +20,10 @@ async function handleLogin(e) {
 try {
     setError('')
     setLoading(true)
-    await login(emailRef.current.value, passwordRef.current.value)
+    const peek = await login(emailRef.current.value, passwordRef.current.value)
+    console.log(peek.user.uid)
+    //now call your server 
+    //const serverOK? = await(fetch api)
     history.push("/mypetfriends")
     }catch {
     setError('Failed to sign in')
@@ -37,10 +40,10 @@ try {
                       
                        {error && <Alert variant="danger">{error}</Alert>}
                         <Form.Group controlId="formBasicEmail"> 
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" ref={emailRef} required  />
-                            <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control type="email" placeholder="Enter email" ref={emailRef} required  />
+                        <Form.Text className="text-muted">
+                        We'll never share your email with anyone else.
                         </Form.Text>
                         </Form.Group>
                         <Form.Group controlId="formBasicPassword">

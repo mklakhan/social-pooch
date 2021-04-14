@@ -5,6 +5,7 @@ const path = require("path");
 const cors = require("cors")
 const PORT = process.env.PORT || 3001;
 const app = express();
+const morgan = require('morgan')
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/socialpooch",
 { useNewUrlParser: true });
@@ -13,6 +14,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/socialpooch",
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+app.use(morgan('dev'))
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
