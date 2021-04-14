@@ -1,16 +1,12 @@
 const db = require("../models");
 
 module.exports = {
-    createUser: function(req, res) {
-        db.User.create(req.body)
-          .then(data => {
-            res.json(data)
-          })
-          .catch(err => {
-            console.log(err)
-            res.status(500).send()
-          })
-      },
+    
+    createUserId: function(req,res) {
+    console.log(req.body)    
+    res.send({ok:"true"})
+    },
+
     getUser: function(req, res) {
         const {id} = req.params
         db.User.findById(id)

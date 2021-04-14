@@ -2,11 +2,13 @@ const router = require("express").Router();
 const userController = require("../controllers/userController.js");
 const petController = require("../controllers/petController.js")
 
+
+router.route("/api/user")
+    .post(userController.createUserId)
+
 router.route("/api/users/:id")
     .get(userController.getUser)
 
-router.route("/api/user")
-    .post(userController.createUser)    
 
 // router.route("/api/likes")    
 //     .get(petController.getLikes)

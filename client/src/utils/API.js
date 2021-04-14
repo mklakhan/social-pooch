@@ -1,6 +1,10 @@
 import axios from 'axios'
 
 export default {
+  createUser: function(newUserId) {
+    return axios.post('/api/user',{uid:newUserId})
+  },
+
   getPet: function() {
     return axios('/api/pet')
   },
