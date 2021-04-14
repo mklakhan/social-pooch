@@ -9,5 +9,8 @@ export default {
   },
   savePet: function(data) {
     return axios.post('/api/pet', data)
-  }
+  },
+  getPetFriends: function(id) {
+    return axios("/api/petFriends/" + id)
+  },
 }

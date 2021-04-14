@@ -34,4 +34,18 @@ module.exports = {
             res.status(500).send()
           })
       },
+      getPetFriends: function(req, res) {
+        const pet_owner = req.params.pet_owner
+        console.log("getting pet friends: ", req.params)
+        //db.Pet.findById({ pet_owner: req.params.pet_owner })   
+        db.Pet.find( { pet_owner: { $eq: pet_owner } } )       
+          .then(petData => {
+            console.log("friend pet data: ", petData)
+            res.json(petData)
+          })
+          .catch(err => {
+            console.log(err)
+            res.status(500).send()
+          })
+      },
 }

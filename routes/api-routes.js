@@ -18,6 +18,9 @@ router.route("/api/pet")
 
 router.route("/api/pets")    
     .get(petController.getPets)
+
+router.route("/api/petFriends/:pet_owner")
+    .get(petController.getPetFriends)    
      
 
 module.exports = router;

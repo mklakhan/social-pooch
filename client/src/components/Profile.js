@@ -23,19 +23,6 @@ export default function Profile() {
     })
 
     const handleChange = (evt) => {
-<<<<<<< HEAD
-        evt.preventDefault();
-        
-        switch (evt.target.name) {
-            case "email":
-                setEmail(evt.target.value)
-                break;
-
-            case "password":
-                setPassword(evt.target.value)
-                break;
-            
-=======
 
         setProfileSettings({
             ...profileSettings,
@@ -44,7 +31,6 @@ export default function Profile() {
        
         
         switch (name) {
->>>>>>> f194d715087572f32b50ca0a75047f538ec945ec
             case "Name":
                 setName(evt.target.value)
                 break;
@@ -100,28 +86,27 @@ export default function Profile() {
            .catch(err => console.log(err))
        }
 
-    const handleSubmit = (evt) => {
-        evt.preventDefault()
-        let profile = {
-            email,
-            password,
-            name,
-            zipcode,
-            birthday,
-            gender,
-            petType,
-            temperment,
-            idealPlaydate
-        } 
+    // const handleSubmit = (evt) => {
+    //     evt.preventDefault()
+    //     let profile = {
+    //         email,
+    //         password,
+    //         name,
+    //         zipcode,
+    //         birthday,
+    //         gender,
+    //         petType,
+    //         temperment,
+    //         idealPlaydate
+    //     } 
         
-        console.log('profile: ', profile);
-    }
+    //     console.log('profile: ', profile);
+    // }
     
     return (
         <Container>
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
-<<<<<<< HEAD
                     <Form className="mt-5 mb-5">
                         
                         <Form.Group controlId="formBasicEmail">
@@ -137,9 +122,6 @@ export default function Profile() {
                             <Form.Control name="password" type="password" placeholder="Password" onChange={handleChange}/>
                         </Form.Group>
                         
-=======
-                    <Form className="mt-5 mb-5" onSubmit={handleSubmit}>
->>>>>>> f194d715087572f32b50ca0a75047f538ec945ec
                         <Form.Group>
                             <Form.File id="exampleFormControlFile1" label="Upload a Profile Picture" />
                         </Form.Group>
