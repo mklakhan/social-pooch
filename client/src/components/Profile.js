@@ -24,6 +24,7 @@ export default function Profile() {
         species: "Dog"        
     })
 
+    console.log("current loaction", location);
     console.log("userId by props: ", location.state.userId);
     const user_id = location.state.userId;
 
