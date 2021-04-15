@@ -9,8 +9,14 @@ import './FindPetFriends.css';
 export default function FindPetFriends() {
 
     const [pets, setPets] = useState([])
+    const [user_id, setUserId] = React.useState(
+        localStorage.getItem('socialpooch-userId') || ''
+      );
 
-    useEffect(() => {
+    console.log("find friends userId: ", user_id);
+
+    useEffect(() => {       
+
         API.getPets()
             .then(function (response) {
                 setPets(response.data);
@@ -25,7 +31,7 @@ export default function FindPetFriends() {
         <div className="findPetFriends">
             {pets.map(pet => (
 
-                <PetCard {...pet} />
+                <PetCard key={pet._id} {...pet } />
 
             ))}
         </div>

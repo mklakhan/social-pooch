@@ -4,20 +4,27 @@ import PetCard from "./PetCard.js"
 import API from "../utils/API.js"
 
 export default function FindPetFriends() {
+
     const [pets, setPets] = useState([])
+    const [user_id, setUserId] = React.useState(
+        localStorage.getItem('socialpooch-userId') || ''
+      );
+
 
     useEffect(() => {
+        
+        console.log("useEffect mypet friends localstorage: ", user_id);        
+        
         API.getPetFriends("8")
             .then(function (response) {
                 setPets(response.data);
                 console.log(response.data);
             })
             .catch(err => console.log(err))
-            
-        console.log("pet:", pets);
     }, [])
 
     return (
+        
         <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" src="https://freepngimg.com/thumb/dog/11-dog-png-image-thumb.png" />
             <Card.Body>
@@ -33,7 +40,7 @@ export default function FindPetFriends() {
             </ListGroup>
             <Card.Body>
                 <Card.Link href="#">Remove</Card.Link>
-            </Card.Body>
+            </Card.Body>            
         </Card>
     )
 }

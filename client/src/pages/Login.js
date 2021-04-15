@@ -11,6 +11,7 @@ const passwordRef = useRef()
 const { login } = useAuth()
 const [error, setError] = useState('')
 const [loading, setLoading] = useState(false)
+
 //logs to page 
 const history = useHistory()
 
@@ -22,9 +23,19 @@ try {
     setLoading(true)
     const peek = await login(emailRef.current.value, passwordRef.current.value)
     console.log(peek.user.uid)
+    const userId = peek.user.uid;
     //now call your server 
     //const serverOK? = await(fetch api)
-    history.push("/mypetfriends")
+    localStorage.setItem('socialpooch-userId', userId);
+
+    //
+    // pass the user id to mypetfriends
+
+    history.push({
+        pathname: '/mypetfriends'
+        //state: {userId: userId}
+      });
+
     }catch {
     setError('Failed to sign in')
 }
