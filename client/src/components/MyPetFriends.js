@@ -7,7 +7,7 @@ import API from "../utils/API.js"
 export default function FindPetFriends() {
     const location = useLocation();
 
-    console.log("userId by props: ", location.state.userId);
+    console.log("mypet friends userId by props: ", location.state.userId);
     
 
     const [pets, setPets] = useState([])
