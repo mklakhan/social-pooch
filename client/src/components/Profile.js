@@ -27,7 +27,6 @@ export default function Profile() {
       );
     
     console.log("profile userId : ", user_id);
-    //const user_id = location.state.userId;
 
     const handleChange = (evt) => {
 
