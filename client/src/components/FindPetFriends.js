@@ -31,7 +31,7 @@ export default function FindPetFriends() {
         <div className="findPetFriends">
             {pets.map(pet => (
 
-                <PetCard {...pet } />
+                <PetCard key={pet._id} {...pet } />
 
             ))}
         </div>
