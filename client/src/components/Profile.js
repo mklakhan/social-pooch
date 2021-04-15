@@ -1,11 +1,14 @@
 import React, {useState} from 'react'
 import {Button, Container, Row, Col, Form} from 'react-bootstrap'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import API from "../utils/API.js"
 import "./Profile.css"
 
 export default function Profile() {
     const history = useHistory()
+    const location = useLocation()
+
+    console.log("Profile userId by props: ", location.state.userId);
 
     const [pet_name, setPet_Name] = useState("")
     const [zipcode, setZipcode] = useState("")
@@ -42,12 +45,16 @@ export default function Profile() {
         pet_owner: "9"
     })
 
+    console.log("userId by props: ", location.state.userId);
+    const user_id = location.state.userId;
+
     const handleChange = (evt) => {
 
-        // setProfileSettings({
-        //     ...profileSettings,
-        //     [evt.target.name]: evt.target.value
-        //   })
+        setProfileSettings({
+            ...profileSettings,
+            [evt.target.name]: evt.target.value,
+            user_id: user_id
+          })
        
         
         switch (evt.target.name) {

@@ -28,10 +28,19 @@ try {
    const peek = await register(emailRef.current.value, passwordRef.current.value)
     console.log(peek.user.uid)
     setUserId(peek.user.uid)
+    const userId = peek.user.uid;
     //now call your server 
     const serverOK = await API.createUser(peek.user.uid)
 
- history.push("/profile")
+    //history.push("/profile")
+    //
+    // pass the user id to mypetfriends
+    
+    history.push({
+        pathname: "/profile",
+        state: {userId: userId}
+    });
+
 } catch {
     setError('Failed to create account')
 }
