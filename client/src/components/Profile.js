@@ -21,8 +21,7 @@ export default function Profile() {
 
     const [profileSettings, setProfileSettings] = useState({
         gender: "Female",
-        species: "Dog",
-        pet_owner: "9"
+        species: "Dog"        
     })
 
     console.log("userId by props: ", location.state.userId);

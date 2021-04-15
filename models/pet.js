@@ -26,9 +26,6 @@ const petSchema = new Schema({
       petPic: {
         type: String,        
       },
-      pet_owner: {
-        type: String
-      },
       user_id: {
         type: String
       },
