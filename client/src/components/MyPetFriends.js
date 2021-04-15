@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react'
+import { useLocation } from "react-router-dom";
 import {Button, Container, Row, Col, Form, Card, ListGroup, ListGroupItem} from 'react-bootstrap'
 import PetCard from "./PetCard.js"
 import API from "../utils/API.js"
 
 export default function FindPetFriends() {
+    const location = useLocation();
+
+    console.log("userId by props: ", location.state.userId);
+    
+
     const [pets, setPets] = useState([])
 
     useEffect(() => {
@@ -14,7 +20,7 @@ export default function FindPetFriends() {
             })
             .catch(err => console.log(err))
             
-        console.log("pet:", pets);
+        
     }, [])
 
     return (

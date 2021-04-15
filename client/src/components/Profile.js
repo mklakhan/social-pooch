@@ -1,10 +1,13 @@
 import React, {useState} from 'react'
 import {Button, Container, Row, Col, Form} from 'react-bootstrap'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import API from "../utils/API.js"
 
 export default function Profile() {
     const history = useHistory()
+    const location = useLocation()
+
+    console.log("Profile userId by props: ", location.state.userId);
 
     const [name, setName] = useState("")
     const [zipcode, setZipcode] = useState("")
@@ -21,6 +24,8 @@ export default function Profile() {
         species: "Dog",
         pet_owner: "9"
     })
+
+    console.log("userId by props: ", location.state.userId);
 
     const handleChange = (evt) => {
 
