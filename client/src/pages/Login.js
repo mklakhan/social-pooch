@@ -26,13 +26,14 @@ try {
     const userId = peek.user.uid;
     //now call your server 
     //const serverOK? = await(fetch api)
+    localStorage.setItem('socialpooch-userId', userId);
 
     //
     // pass the user id to mypetfriends
-    
+
     history.push({
-        pathname: '/mypetfriends',
-        state: {userId: userId}
+        pathname: '/mypetfriends'
+        //state: {userId: userId}
       });
 
     }catch {

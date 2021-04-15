@@ -13,7 +13,7 @@ const passwordConfirmRef = useRef()
 const { register} = useAuth()
 const [error, setError] = useState('')
 const [loading, setLoading] = useState(false)
-const [userId, setUserId] = useState('')
+//const [userId, setUserId] = useState('')
 //logs to page 
 const history = useHistory()
 
@@ -27,19 +27,13 @@ try {
     setLoading(true)
    const peek = await register(emailRef.current.value, passwordRef.current.value)
     console.log(peek.user.uid)
-    setUserId(peek.user.uid)
+    //setUserId(peek.user.uid)
     const userId = peek.user.uid;
+    localStorage.setItem('socialpooch-userId', userId);
     //now call your server 
     const serverOK = await API.createUser(peek.user.uid)
 
-    //history.push("/profile")
-    //
-    // pass the user id to mypetfriends
-    
-    history.push({
-        pathname: "/profile",
-        state: {userId: userId}
-    });
+    history.push("/profile")
 
 } catch {
     setError('Failed to create account')

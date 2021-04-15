@@ -7,7 +7,6 @@ export default function Profile() {
     const history = useHistory()
     const location = useLocation()
 
-    console.log("Profile userId by props: ", location.state.userId);
 
     const [name, setName] = useState("")
     const [zipcode, setZipcode] = useState("")
@@ -23,10 +22,12 @@ export default function Profile() {
         gender: "Female",
         species: "Dog"        
     })
-
-    console.log("current loaction", location);
-    console.log("userId by props: ", location.state.userId);
-    const user_id = location.state.userId;
+    const [user_id, setUserId] = React.useState(
+        localStorage.getItem('socialpooch-userId') || ''
+      );
+    
+    console.log("profile userId : ", user_id);
+    //const user_id = location.state.userId;
 
     const handleChange = (evt) => {
 
