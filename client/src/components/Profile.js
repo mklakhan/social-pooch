@@ -26,12 +26,14 @@ export default function Profile() {
     })
 
     console.log("userId by props: ", location.state.userId);
+    const user_id = location.state.userId;
 
     const handleChange = (evt) => {
 
         setProfileSettings({
             ...profileSettings,
-            [evt.target.name]: evt.target.value
+            [evt.target.name]: evt.target.value,
+            user_id: user_id
           })
        
         
