@@ -2,20 +2,40 @@ import React, {useState} from 'react'
 import {Button, Container, Row, Col, Form} from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 import API from "../utils/API.js"
+import "./Profile.css"
 
 export default function Profile() {
     const history = useHistory()
 
-    const [name, setName] = useState("")
+    const [pet_name, setPet_Name] = useState("")
     const [zipcode, setZipcode] = useState("")
     const [birthday, setBirthday] = useState("")
-    const [gender, setGender] = useState("")
-    const [petType, setPetType] = useState("")
+    const [gender, setGender] = useState("Female")
+    const [species, setSpecies] = useState("Dog")
     const [temperment, setTemperment] = useState("")
-    const [idealPlaydate, setIdealPlaydate] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [playdate, setPlaydate] = useState("")
+    const [petPic, setPetPic] = useState("")
+    const [showImg, setShowImg] = useState(false)
+    // const [email, setEmail] = useState("")
+    // const [password, setPassword] = useState("")
+    
+    //for profile image upload//
+    const imgToBase64 = function(img) {
+        console.log("i'm in img base")
+        let fileReader = new FileReader();
+        let base64;
 
+        fileReader.readAsDataURL(img)
+
+        fileReader.onloadend = function() {
+            // base64 = fileReader.result.replace(/^data:.+;base64,/, '');
+            base64 = fileReader.result;
+            console.log(base64);
+            setPetPic(base64)
+            setShowImg(true)          
+        }
+    }
+//do we need this here?//
     const [profileSettings, setProfileSettings] = useState({
         gender: "Female",
         species: "Dog",
@@ -24,15 +44,15 @@ export default function Profile() {
 
     const handleChange = (evt) => {
 
-        setProfileSettings({
-            ...profileSettings,
-            [evt.target.name]: evt.target.value
-          })
+        // setProfileSettings({
+        //     ...profileSettings,
+        //     [evt.target.name]: evt.target.value
+        //   })
        
         
-        switch (name) {
-            case "Name":
-                setName(evt.target.value)
+        switch (evt.target.name) {
+            case "pet_name":
+                setPet_Name(evt.target.value)
                 break;
         
             case "zipcode":
@@ -47,61 +67,90 @@ export default function Profile() {
                 setGender(evt.target.value)
                 break;
 
-            case "pet_type":
-                setPetType(evt.target.value)
+            case "species":
+                setSpecies(evt.target.value)
                 break;
         
             case "temperment":
                 setTemperment(evt.target.value)
                 break;
             
-            case "ideal_playdate":
-                setIdealPlaydate(evt.target.value)
+            case "playdate":
+                setPlaydate(evt.target.value)
                 break;
+
+            case "file-upload-label":
+                console.log({ type: evt.target.files[0] });
+                let imgText = imgToBase64(evt.target.files[0]);
+                console.log('imgText: ', imgText);
+                break;
+
             default:
                 break;
         }
      }     
  
-     function handleSubmit(e) {
-         e.preventDefault();
-         console.log('form submit');
-         save();
-       }
+    //  function handleSubmit(e) {
+    //      e.preventDefault();
+    //      console.log('form submit');
+    //      save();
+    //    }
  
  
-     const save = () => { 
-         console.log("in save")
-         const postData = {
-           ...profileSettings          
-         }
-         console.log("post data", postData);
+    //  const save = () => { 
+    //      console.log("in save")
+    //      const postData = {
+    //        ...profileSettings          
+    //      }
+    //      console.log("post data", postData);
  
-         API.savePet(postData)
-           .then(function (response) 
-             {
-                 console.log("savePet response", response)
-                 history.push("/findpetfriends")
-             })
-           .catch(err => console.log(err))
-       }
+    //      API.savePet(postData)
+    //        .then(function (response) 
+    //          {
+    //              console.log("savePet response", response)
+    //              history.push("/findpetfriends")
+    //          })
+    //        .catch(err => console.log(err))
+    //    }
 
-    // const handleSubmit = (evt) => {
-    //     evt.preventDefault()
-    //     let profile = {
-    //         email,
-    //         password,
-    //         name,
-    //         zipcode,
-    //         birthday,
-    //         gender,
-    //         petType,
-    //         temperment,
-    //         idealPlaydate
-    //     } 
+    const handleSubmit = (evt) => {
+        evt.preventDefault()
+        let profile = {
+            pet_name,
+            zipcode,
+            birthday,
+            gender,
+            species,
+            temperment,
+            playdate,
+            petPic
+        } 
+
+        fetch('http://localhost:3001/api/pet', {
+            method: 'POST',
+            headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+            body: JSON.stringify(profile)
+        })
+            .then(response => {
+                // network failure, request prevented
+                if (response.status >= 200 && response.status < 300) {
+                    return Promise.resolve(response);
+                }
         
-    //     console.log('profile: ', profile);
-    // }
+        
+                return Promise.reject(new Error(response.statusText));
+            })
+            .then(response => response.json())
+            .then(result => {
+            console.log(result)
+            })
+            .catch(error => {
+                // common error
+                return null;
+            });
+        
+        console.log('profile: ', profile);
+    }
     
     return (
         <Container>
@@ -109,25 +158,19 @@ export default function Profile() {
                 <Col md={{ span: 6, offset: 3 }}>
                     <Form className="mt-5 mb-5">
                         
-                        <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control name="email" type="email" placeholder="Enter email" onChange={handleChange}/>
-                            <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
-                        </Form.Text>
+                        {/* <Form.Group id="profilePic">
+                            <Form.Label id="file-upload-label">Upload Profile Picture</Form.Label>
+                            <Form.File  name="file-upload-label" id="file-upload" onChange={handleChange}/>
+                        </Form.Group> */}
+
+                        <Form.Group custom="false" style={{ backgroundImage: "url(" + petPic + ")", color: "red" }} id="profilePic">
+                            <Form.Label id="file-upload-label">Upload a Profile Picture </Form.Label>
+                            <Form.File name="file-upload-label" id="file-upload" onChange={handleChange} />
                         </Form.Group>
 
-                        <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control name="password" type="password" placeholder="Password" onChange={handleChange}/>
-                        </Form.Group>
-                        
-                        <Form.Group>
-                            <Form.File id="exampleFormControlFile1" label="Upload a Profile Picture" />
-                        </Form.Group>
-
+                        <div className="petData">
                         <Form.Group controlId="exampleForm.ControlInput1">
-                            <Form.Label>Name</Form.Label>
+                            <Form.Label>Pet Name</Form.Label>
                             <Form.Control name="pet_name" type="input" placeholder="" onChange={handleChange} />
                         </Form.Group>
 
@@ -151,7 +194,7 @@ export default function Profile() {
                         </Form.Group>
 
                         <Form.Group controlId="exampleForm.ControlSelect2">
-                            <Form.Label>Pet Type</Form.Label>
+                            <Form.Label>Species</Form.Label>
                             <Form.Control name="species" as="select" onChange={handleChange} value={profileSettings.species}>
                                 <option>Bird</option>
                                 <option>Cat</option>
@@ -182,12 +225,13 @@ export default function Profile() {
 
                         <Form.Group controlId="exampleForm.ControlTextarea1">
                             <Form.Label>Ideal Playdate</Form.Label>
-                            <Form.Control name="ideal_playdate" as="textarea" rows={3} onChange={handleChange}/>
+                            <Form.Control name="playdate" as="textarea" rows={3} onChange={handleChange}/>
                         </Form.Group>
 
                         <Button variant="primary" type="submit" onClick={handleSubmit}>
                             Submit
                         </Button>
+                        </div>
 
                     </Form>
 

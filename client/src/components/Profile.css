@@ -1,0 +1,31 @@
+#profilePic {
+    width: 15rem;
+    height: 15rem;
+    border: 2px solid black;
+    border-radius: 50%;
+    position: relative;
+    top: 4rem;
+    right: 22rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 15rem 15rem;
+}
+
+.petData {
+    margin-top: -15rem;
+
+}
+
+#file-upload-label {
+    position: relative;
+    top: -2rem;
+    left: 2.2rem;
+    
+}
+
+#file-upload {
+    margin-top: 4rem;
+    margin-left: 1rem;
+
+}
+
