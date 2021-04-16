@@ -39,10 +39,14 @@ module.exports = {
           })
       },
       getPetFriends: function(req, res) {
-        const pet_owner = req.params.pet_owner
-        console.log("getting pet friends: ", req.params)
+        //const pet_owner = req.params.pet_owner
+        const pet_owner = req.params.user_id
+
+        console.log("Getting pet friends: ", req.params)
+
         //db.Pet.findById({ pet_owner: req.params.pet_owner })   
-        db.Pet.find( { pet_owner: { $eq: pet_owner } } )       
+        db.Pet.find( { user_id: { $eq: pet_owner } } )   
+          .populate("likes")    
           .then(petData => {
             console.log("friend pet data: ", petData)
             res.json(petData)

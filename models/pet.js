@@ -34,7 +34,7 @@ const petSchema = new Schema({
       },
       likes: [{
         type: Schema.Types.ObjectId,
-        ref: 'Likes'      
+        ref: 'Pet'
       }]     
 })
 
