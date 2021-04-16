@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Button, Container, Row, Col, Form} from 'react-bootstrap'
+import {Button, Container, Row, Col, Form, Toast} from 'react-bootstrap'
 import { useHistory, useLocation } from 'react-router-dom'
 import API from "../utils/API.js"
 import "./Profile.css"
@@ -18,6 +18,8 @@ export default function Profile() {
     const [playdate, setPlaydate] = useState("")
     const [petPic, setPetPic] = useState("")
     const [showImg, setShowImg] = useState(false)
+    const [show, setShow] = useState(false)
+    
     // const [email, setEmail] = useState("")
     // const [password, setPassword] = useState("")
     
@@ -154,6 +156,7 @@ export default function Profile() {
             .then(response => response.json())
             .then(result => {
             console.log(result)
+            setShow(true)
             })
             .catch(error => {
                 // common error
@@ -165,6 +168,21 @@ export default function Profile() {
     
     return (
         <Container>
+            <Row id="toast">
+                <Col xs={6}>
+                    <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
+                        <Toast.Header>
+                            <img
+                                src="holder.js/20x20?text=%20"
+                                className="rounded mr-2"
+                                alt=""
+                            />
+                            <strong className="mr-auto">Success!</strong>
+                        </Toast.Header>
+                        <Toast.Body>You have saved your profile!</Toast.Body>
+                    </Toast>
+                </Col>
+            </Row>
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
                     <Form className="mt-5 mb-5">
