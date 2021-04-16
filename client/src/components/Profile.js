@@ -48,10 +48,6 @@ export default function Profile() {
 
     const handleChange = (evt) => {
 
-        // setProfileSettings({
-        //     ...profileSettings,
-        //     [evt.target.name]: evt.target.value
-        //   })
         setProfileSettings({
             ...profileSettings,
             [evt.target.name]: evt.target.value,
