@@ -53,8 +53,8 @@ const runSeeder = async () => {
       //await db.Pet.update({}, { user: user._id })
 
       console.log("creating like record")
-      const likeResult = await db.Likes.insertMany(likeSeed, { raw: true })
-      console.log("like record", likeResult);
+      //const likeResult = await db.Likes.insertMany(likeSeed, { raw: true })
+      //console.log("like record", likeResult);
 
     //   console.log("like Result", likeResult)
     //   const likeArray = [];
