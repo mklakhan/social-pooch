@@ -21,7 +21,7 @@ router.route("/api/pet")
 router.route("/api/pets")    
     .get(petController.getPets)
 
-router.route("/api/petFriends/:pet_owner")
+router.route("/api/petFriends/:user_id")
     .get(petController.getPetFriends)    
      
 
