@@ -6,15 +6,15 @@ function PetCard( props) {
 return (
 
     <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="https://freepngimg.com/thumb/dog/1-2-dog-png-10-thumb.png" />
+        <Card.Img variant="top" src={props.petPic} />
         <Card.Body>
             <Card.Title>{props.pet_name}</Card.Title>
             <Card.Text>{props.playdate}</Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
-            <ListGroupItem>Chicago, IL {props.zipcode}</ListGroupItem>
+            <ListGroupItem>{props.zipcode}</ListGroupItem>
             <ListGroupItem>{props.gender}</ListGroupItem>
-            <ListGroupItem>2 Yers</ListGroupItem>
+            <ListGroupItem>{props.birthday}</ListGroupItem>
         </ListGroup>
         <Card.Body>
             <Card.Link href="#">Dislike</Card.Link>

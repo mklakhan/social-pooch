@@ -16,7 +16,8 @@ router.route("/api/users/:id")
 
 router.route("/api/pet")    
     .get(petController.getPet)
-    .post(petController.createPet)    
+    .post(petController.createPet)  
+    .put(petController.putPet)  
 
 router.route("/api/pets")    
     .get(petController.getPets)

@@ -29,9 +29,12 @@ const petSchema = new Schema({
       user_id: {
         type: String
       },
+      birthday: {
+        type: Date
+      },
       likes: [{
         type: Schema.Types.ObjectId,
-        ref: 'Likes'
+        ref: 'Likes'      
       }]     
 })
 

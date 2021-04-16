@@ -23,6 +23,10 @@ module.exports = {
             res.status(500).send()
           })
       },
+      putPet: function(req,res) {
+        // db.Pet.updateOne({id:})
+        res.send("testing putPet")
+      },
       getPets: function(req, res) {
         db.Pet.find({})
           .sort({ date: -1 })
