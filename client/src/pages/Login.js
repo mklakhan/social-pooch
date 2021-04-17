@@ -8,7 +8,7 @@ export default function Login() {
 const emailRef = useRef()
 const passwordRef = useRef()
 
-const { login } = useAuth()
+ const useAut = useAuth()
 const [error, setError] = useState('')
 const [loading, setLoading] = useState(false)
 
@@ -21,9 +21,10 @@ async function handleLogin(e) {
 try {
     setError('')
     setLoading(true)
-    const peek = await login(emailRef.current.value, passwordRef.current.value)
+    const peek = await useAut.login(emailRef.current.value, passwordRef.current.value)
     console.log(peek.user.uid)
     const userId = peek.user.uid;
+    useAut.setCurrentUserStr("stubs")
     //now call your server 
     //const serverOK? = await(fetch api)
     localStorage.setItem('socialpooch-userId', userId);
