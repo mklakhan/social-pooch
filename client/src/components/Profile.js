@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Button, Container, Row, Col, Form, Toast} from 'react-bootstrap'
+import { Button, Container, Row, Col, Form } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 import API from "../utils/API.js"
 import "./Profile.css"
@@ -16,10 +16,16 @@ export default function Profile() {
     const [playdate, setPlaydate] = useState("")
     const [petPic, setPetPic] = useState("")
     const [showImg, setShowImg] = useState(false)
-    const [show, setShow] = useState(false)
-    
-    // const [email, setEmail] = useState("")
-    // const [password, setPassword] = useState("")
+
+    //do we need this here?//
+    const [profileSettings, setProfileSettings] = useState({
+        gender: "Female",
+        species: "Dog"
+    })
+    const [user_id, setUserId] = React.useState(
+        localStorage.getItem('socialpooch-userId') || ''
+    );
+
 
     //for profile image upload//
     const imgToBase64 = function (img) {
@@ -33,19 +39,16 @@ export default function Profile() {
             // base64 = fileReader.result.replace(/^data:.+;base64,/, '');
             base64 = fileReader.result;
             console.log(base64);
-            setPetPic(base64)            
+
+            setPetPic(base64)
+            setProfileSettings({ ...profileSettings, petPic: base64 })
+
             setShowImg(true)
+
         }
     }
-    //do we need this here?//
-    const [profileSettings, setProfileSettings] = useState({
-        gender: "Female",
-        species: "Dog"
-    })
-    const [user_id, setUserId] = React.useState(
-        localStorage.getItem('socialpooch-userId') || ''
-    );
 
+    console.log("profile after set pic", profileSettings);
     console.log("profile userId : ", user_id);
 
     const handleChange = (evt) => {
@@ -53,7 +56,8 @@ export default function Profile() {
         setProfileSettings({
             ...profileSettings,
             [evt.target.name]: evt.target.value,
-            user_id: user_id
+            user_id: user_id,
+            petPic: petPic
         })
 
 
@@ -88,7 +92,7 @@ export default function Profile() {
 
             case "file-upload-label":
                 console.log({ type: evt.target.files[0] });
-                let imgText = imgToBase64(evt.target.files[0]);               
+                let imgText = imgToBase64(evt.target.files[0]);
                 console.log('imgText: ', imgText);
                 break;
 
@@ -97,41 +101,40 @@ export default function Profile() {
         }
     }
 
-     function handleSubmit(e) {
-         e.preventDefault();
-         console.log('form submit');
-         save();
-       }
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log('form submit');
+        save();
+    }
 
 
-     const save = () => { 
-         console.log("in save")
+    const save = () => {
+        console.log("in save")
 
-         let profile = {
-                    pet_name,
-                    zipcode,
-                    birthday,
-                    gender,
-                    species,
-                    temperment,
-                    playdate,
-                    petPic
-                }
-        setProfileSettings(profile)                
+        let profile = {
+            pet_name,
+            zipcode,
+            birthday,
+            gender,
+            species,
+            temperment,
+            playdate,
+            petPic
+        }
+        setProfileSettings(profile)
 
-         const postData = {
-           ...profileSettings          
-         }
-         console.log("post data", postData);
+        const postData = {
+            ...profileSettings
+        }
+        console.log("post data", postData);
 
-         API.savePet(postData)
-           .then(function (response) 
-             {
-                 console.log("savePet response", response)
-                 history.push("/findpetfriends")
-             })
-           .catch(err => console.log(err))
-       }
+        API.savePet(postData)
+            .then(function (response) {
+                console.log("savePet response", response)
+                history.push("/findpetfriends")
+            })
+            .catch(err => console.log(err))
+    }
 
     // const handleSubmit = (evt) => {
     //     evt.preventDefault()
@@ -174,21 +177,6 @@ export default function Profile() {
 
     return (
         <Container>
-            <Row id="toast">
-                <Col xs={6}>
-                    <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
-                        <Toast.Header>
-                            <img
-                                src="holder.js/20x20?text=%20"
-                                className="rounded mr-2"
-                                alt=""
-                            />
-                            <strong className="mr-auto">Success!</strong>
-                        </Toast.Header>
-                        <Toast.Body>You have saved your profile!</Toast.Body>
-                    </Toast>
-                </Col>
-            </Row>
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
                     <Form className="mt-5 mb-5">
@@ -199,12 +187,12 @@ export default function Profile() {
                         </Form.Group> */}
 
                         <Form.Group custom="false" style={{ backgroundImage: "url(" + petPic + ")", color: "red" }} id="profilePic">
-                            <Form.Label 
+                            <Form.Label
                                 id="file-upload-label">Upload a Profile Picture </Form.Label>
-                            <Form.File 
-                                name="file-upload-label" 
+                            <Form.File
+                                name="file-upload-label"
                                 //name="petPic" 
-                                id="file-upload" 
+                                id="file-upload"
                                 onChange={handleChange} />
                         </Form.Group>
 
