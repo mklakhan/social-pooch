@@ -16,8 +16,16 @@ export default function Profile() {
     const [playdate, setPlaydate] = useState("")
     const [petPic, setPetPic] = useState("")
     const [showImg, setShowImg] = useState(false)
-    // const [email, setEmail] = useState("")
-    // const [password, setPassword] = useState("")
+
+    //do we need this here?//
+    const [profileSettings, setProfileSettings] = useState({
+        gender: "Female",
+        species: "Dog"
+    })
+    const [user_id, setUserId] = React.useState(
+        localStorage.getItem('socialpooch-userId') || ''
+    );
+
 
     //for profile image upload//
     const imgToBase64 = function (img) {
@@ -31,19 +39,16 @@ export default function Profile() {
             // base64 = fileReader.result.replace(/^data:.+;base64,/, '');
             base64 = fileReader.result;
             console.log(base64);
-            setPetPic(base64)            
+
+            setPetPic(base64)  
+            setProfileSettings({...profileSettings, petPic: base64})
+
             setShowImg(true)
+            
         }
     }
-    //do we need this here?//
-    const [profileSettings, setProfileSettings] = useState({
-        gender: "Female",
-        species: "Dog"
-    })
-    const [user_id, setUserId] = React.useState(
-        localStorage.getItem('socialpooch-userId') || ''
-    );
 
+    console.log("profile after set pic",profileSettings);
     console.log("profile userId : ", user_id);
 
     const handleChange = (evt) => {
@@ -51,7 +56,8 @@ export default function Profile() {
         setProfileSettings({
             ...profileSettings,
             [evt.target.name]: evt.target.value,
-            user_id: user_id
+            user_id: user_id,
+            petPic: petPic
         })
 
 
@@ -87,7 +93,7 @@ export default function Profile() {
             case "file-upload-label":
                 console.log({ type: evt.target.files[0] });
                 let imgText = imgToBase64(evt.target.files[0]);               
-                console.log('imgText: ', imgText);
+                console.log('imgText: ', imgText);               
                 break;
 
             default:
