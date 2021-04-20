@@ -63,19 +63,20 @@ module.exports = {
 
         db.Pet.updateOne({user_id: {$eq: pet_owner} },
           { $pull: {
-              likes: {_id: dislikePet}
+              likes: dislike_pet_id 
               } 
           },
-          //{pet_name: 'Tiger2'},
-          function(err, data) {
-            if (err) {
-              console.log(err)
-            }
-            else {
-              console.log("update complete: ",data)
-            }
-          }
+          //{ $pull: {"list": dislike_pet_id}}
+          //{pet_name: 'Tiger3'},
         )
+        .then( petData => {
+          res.json(petData)
+        })
+        .catch(err => {
+          console.log(err)
+          res.status(500).send()
+        })
+
         //   .then(petData => {
         //     res.status(200).send("hi " + pet_owner)
         //   })
@@ -101,7 +102,7 @@ module.exports = {
         // db.Pet.updateOne({id:})
         //res.send("testing dislikePet")
 
-        res.status(200).send("update complete")
+        //res.status(200).send("update complete")
         
       },
 }
