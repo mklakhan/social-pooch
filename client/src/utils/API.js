@@ -17,4 +17,7 @@ export default {
   getPetFriends: function(id) {
     return axios("/api/petFriends/" + id)
   },
+  dislikePet: function(dislikeData) {    
+    return axios.put("/api/dislikePet", dislikeData)
+  }
 }

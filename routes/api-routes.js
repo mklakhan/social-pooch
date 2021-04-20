@@ -23,7 +23,10 @@ router.route("/api/pets")
     .get(petController.getPets)
 
 router.route("/api/petFriends/:user_id")
-    .get(petController.getPetFriends)    
+    .get(petController.getPetFriends)  
+    
+router.route("/api/dislikePet") 
+    .put(petController.dislikePet)
      
 
 module.exports = router;
