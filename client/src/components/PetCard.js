@@ -4,6 +4,20 @@ import API from '../utils/API';
 
 function handleClickLike(id) {
     console.log(id);
+
+    let user_id = localStorage.getItem('socialpooch-userId')
+    console.log(user_id)
+
+    let likeData = {
+        user_id: user_id,
+        id: id
+    }
+        
+    API.likePet(likeData)
+        .then(function (response) {
+            console.log("liked completed", response)            
+        })
+        .catch(err => console.log(err))
 }
 
 function handleClickDislike(id) {

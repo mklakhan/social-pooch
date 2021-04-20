@@ -27,6 +27,9 @@ router.route("/api/petFriends/:user_id")
     
 router.route("/api/dislikePet") 
     .put(petController.dislikePet)
+
+router.route("/api/likePet") 
+    .put(petController.likePet)    
      
 
 module.exports = router;

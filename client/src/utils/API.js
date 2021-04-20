@@ -19,5 +19,8 @@ export default {
   },
   dislikePet: function(dislikeData) {    
     return axios.put("/api/dislikePet", dislikeData)
+  },
+  likePet: function(likeData) {    
+    return axios.put("/api/likePet", likeData)
   }
 }
