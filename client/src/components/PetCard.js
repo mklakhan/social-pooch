@@ -60,8 +60,8 @@ function PetCard(props) {
             </ListGroup>
             <Card.Body>
                 <Card.Link 
-                onClick={() => { handleClickDislike( props._id) }}
-                href="#">Dislike
+                    onClick={() => { handleClickDislike( props._id) }}
+                    href="#">Dislike
                 </Card.Link>
                 <Card.Link
                     onClick={() => { handleClickLike(props._id) }}

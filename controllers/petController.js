@@ -92,8 +92,9 @@ module.exports = {
         const pet_owner = req.body.user_id
         const like_pet_id = req.body.id
 
+        // replace $push with addToSet, so no dups
         db.Pet.updateOne({user_id: {$eq: pet_owner} },
-          { $push: { likes: like_pet_id } },         
+          { $addToSet: { likes: like_pet_id } },         
           //{pet_name: 'Tiger3'},
         )
         .then( petData => {
