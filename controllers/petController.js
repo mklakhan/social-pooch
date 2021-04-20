@@ -56,17 +56,12 @@ module.exports = {
             res.status(500).send()
           })
       },
-      dislikePet: function(req,res) {
-        console.log("req params ", req.body);
+      dislikePet: function(req,res) {        
         const pet_owner = req.body.user_id
         const dislike_pet_id = req.body.id
 
         db.Pet.updateOne({user_id: {$eq: pet_owner} },
-          { $pull: {
-              likes: dislike_pet_id 
-              } 
-          },
-          //{ $pull: {"list": dislike_pet_id}}
+          { $pull: { likes: dislike_pet_id } },         
           //{pet_name: 'Tiger3'},
         )
         .then( petData => {
@@ -75,34 +70,6 @@ module.exports = {
         .catch(err => {
           console.log(err)
           res.status(500).send()
-        })
-
-        //   .then(petData => {
-        //     res.status(200).send("hi " + pet_owner)
-        //   })
-        // db.Pet.findOneAndReplace(
-        //   {user_id: pet_owner},
-        //   {likes}
-        // )
-
-        // //
-        // // get the profile of the pet owner
-
-        // db.Pet.find( { user_id: { $eq: pet_owner } } )   
-        //   .populate("likes")    
-        //   .then(petData => {
-        //     console.log("friend pet data: ", petData)
-        //     //res.json(petData)
-        //   })
-        //   .catch(err => {
-        //     console.log(err)
-        //     res.status(500).send()
-        //   })
-
-        // db.Pet.updateOne({id:})
-        //res.send("testing dislikePet")
-
-        //res.status(200).send("update complete")
-        
+        })       
       },
 }
