@@ -1,44 +1,48 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Container, Row, Col, Form, Card, ListGroup, ListGroupItem } from 'react-bootstrap'
+import { useHistory } from "react-router-dom"
 import API from '../utils/API';
 
-function handleClickLike(id) {
-    console.log(id);
 
-    let user_id = localStorage.getItem('socialpooch-userId')
-    console.log(user_id)
-
-    let likeData = {
-        user_id: user_id,
-        id: id
-    }
-        
-    API.likePet(likeData)
-        .then(function (response) {
-            console.log("liked completed", response)            
-        })
-        .catch(err => console.log(err))
-}
-
-function handleClickDislike(id) {
-    let user_id = localStorage.getItem('socialpooch-userId')
-    console.log(user_id)
-
-    let dislikeData = {
-        user_id: user_id,
-        id: id
-    }
-    
-    API.dislikePet(dislikeData)
-        .then(function (response) {
-            console.log("dislike completed", response)            
-        })
-        .catch(err => console.log(err))
-    }
 
 function PetCard(props) {
-
+    const history = useHistory()
     const [pets, setPets] = useState([])
+    
+    function handleClickLike(id) {
+        console.log(id);
+    
+        let user_id = localStorage.getItem('socialpooch-userId')
+        console.log(user_id)
+    
+        let likeData = {
+            user_id: user_id,
+            id: id
+        }
+            
+        API.likePet(likeData)
+            .then(function (response) {
+                console.log("liked completed", response)                           
+            })
+            .catch(err => console.log(err))
+    }
+
+    function handleClickDislike(id) {
+        let user_id = localStorage.getItem('socialpooch-userId')
+        console.log(user_id)
+    
+        let dislikeData = {
+            user_id: user_id,
+            id: id
+        }
+        
+        API.dislikePet(dislikeData)
+            .then(function (response) {
+                console.log("dislike completed", response)     
+                history.push("/mypetfriends")      
+            })
+            .catch(err => console.log(err))       
+        }
     
     return (
 
