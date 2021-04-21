@@ -22,17 +22,31 @@ export default function FindPetFriends() {
                 setPets(response.data);
                 console.log(response.data);
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err))        
+
     }, [])
 
 
-    return (
+    const RemoveProfile = () => {
+         
+            let newPets = pets.filter(function (pet) {
+                if (pet.user_id != user_id) {
+                    return pet
+                } 
+            })
+           
+            setPets(newPets);
+            console.log("new pets: ",newPets)
+    }
 
+    return (        
+       
         <div className="findPetFriends">
+          
             {pets.map(pet => (
-
+            
                 <PetCard key={pet._id} {...pet } showLike={true} showDislike={false} />
-
+              
             ))}
         </div>
 

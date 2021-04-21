@@ -42,7 +42,8 @@ function PetCard(props) {
         API.dislikePet(dislikeData)
             .then(function (response) {
                 console.log("dislike completed", response)     
-                history.push("/mypetfriends")      
+                //history.push("/mypetfriends") 
+                document.location.reload();
             })
             .catch(err => console.log(err))       
         }

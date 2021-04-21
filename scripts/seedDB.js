@@ -4,6 +4,10 @@ const db = require("../models");
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/socialpooch",
 { useNewUrlParser: true, useFindAndModify: false});
 
+// mongoose.connect("mongodb+srv://aikakuo:hCpUZLzNR1GNQY1n@cluster0.buikw.mongodb.net/socialpooch?retryWrites=true&w=majority",
+// { useNewUrlParser: true, useFindAndModify: false});
+
+
 const userSeed = [{ 
     username: "admin",
     password: "admin",
