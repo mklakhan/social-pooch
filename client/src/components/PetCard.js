@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Container, Row, Col, Form, Card, ListGroup, ListGroupItem } from 'react-bootstrap'
 import { useHistory } from "react-router-dom"
+import { IoHeartHalf, IoHeartDislike } from "react-icons/io5";
 import API from '../utils/API';
 
 
@@ -8,6 +9,8 @@ import API from '../utils/API';
 function PetCard(props) {
     const history = useHistory()
     const [pets, setPets] = useState([])
+
+    console.log("petcard: ",props)
     
     function handleClickLike(id) {
         console.log(id);
@@ -53,20 +56,24 @@ function PetCard(props) {
                 <Card.Text>{props.playdate}</Card.Text>
             </Card.Body>
             <ListGroup className="list-group-flush">
-                <ListGroupItem>{props._id}</ListGroupItem>
+                {/* <ListGroupItem>{props._id}</ListGroupItem> */}
                 <ListGroupItem>{props.zipcode}</ListGroupItem>
                 <ListGroupItem>{props.gender}</ListGroupItem>
                 <ListGroupItem>{props.birthday}</ListGroupItem>
             </ListGroup>
             <Card.Body>
-                <Card.Link 
-                    onClick={() => { handleClickDislike( props._id) }}
-                    href="#">Dislike
-                </Card.Link>
-                <Card.Link
-                    onClick={() => { handleClickLike(props._id) }}
-                    href="#">Like
-                </Card.Link>
+                {props.showDislike && (
+                    <Card.Link 
+                        onClick={() => { handleClickDislike( props._id) }}
+                        href="#">Dislike <IoHeartDislike />
+                    </Card.Link>
+                )}
+                {props.showLike && (
+                    <Card.Link
+                        onClick={() => { handleClickLike(props._id) }}
+                        href="#">Like <IoHeartHalf/>
+                    </Card.Link>
+                )}
             </Card.Body>
 
         </Card>
