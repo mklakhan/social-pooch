@@ -38,7 +38,12 @@ module.exports = {
       // get all available pets
       //
       getPets: function(req, res) {
-        db.Pet.find({})
+        const pet_owner = req.params.user_id
+
+        //db.Pet.find({})
+        // find all pets, except yourself
+        //
+        db.Pet.find({user_id: { $ne: pet_owner }})
           .sort({ date: -1 })
           .then(petData => {
             res.json(petData)

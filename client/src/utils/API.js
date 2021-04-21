@@ -8,8 +8,8 @@ export default {
   getPet: function() {
     return axios('/api/pet')
   },
-  getPets: function() {
-    return axios('/api/pets')
+  getPets: function(id) {
+    return axios("/api/pets/" + id)
   },
   savePet: function(data) {
     return axios.post('/api/pet', data)

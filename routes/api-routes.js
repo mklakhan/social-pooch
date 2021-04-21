@@ -19,7 +19,7 @@ router.route("/api/pet")
     .post(petController.createPet)  
     .put(petController.putPet)  
 
-router.route("/api/pets")    
+router.route("/api/pets/:user_id")    
     .get(petController.getPets)
 
 router.route("/api/petFriends/:user_id")

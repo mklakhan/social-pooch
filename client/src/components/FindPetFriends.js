@@ -17,7 +17,7 @@ export default function FindPetFriends() {
 
     useEffect(() => {       
 
-        API.getPets()
+        API.getPets(user_id)
             .then(function (response) {
                 setPets(response.data);
                 console.log(response.data);
@@ -25,19 +25,6 @@ export default function FindPetFriends() {
             .catch(err => console.log(err))        
 
     }, [])
-
-
-    const RemoveProfile = () => {
-         
-            let newPets = pets.filter(function (pet) {
-                if (pet.user_id != user_id) {
-                    return pet
-                } 
-            })
-           
-            setPets(newPets);
-            console.log("new pets: ",newPets)
-    }
 
     return (        
        
@@ -49,7 +36,6 @@ export default function FindPetFriends() {
               
             ))}
         </div>
-
     )
 }
 

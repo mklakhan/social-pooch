@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Container, Row, Col, Form, Card, ListGroup, ListGroupItem } from 'react-bootstrap'
-import { useHistory } from "react-router-dom"
 import { IoHeartHalf, IoHeartDislike } from "react-icons/io5";
 import API from '../utils/API';
 
 
 
 function PetCard(props) {
-    const history = useHistory()
     const [pets, setPets] = useState([])
 
     console.log("petcard: ",props)
@@ -76,7 +74,6 @@ function PetCard(props) {
                     </Card.Link>
                 )}
             </Card.Body>
-
         </Card>
     )
 }
