@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect} from 'react'
 import { Button, Container, Row, Col, Form } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 import API from "../utils/API.js"
 import "./Profile.css"
+
 
 export default function Profile() {
     const history = useHistory()
@@ -135,6 +136,21 @@ export default function Profile() {
             })
             .catch(err => console.log(err))
     }
+
+useEffect(() => {
+    if (user_id !== null) {
+        API.getPetA(user_id)
+        .then((results) => {
+            console.log(results)
+        }) 
+        .catch((err) => {
+          console.log(err)  
+        })
+    }  
+}, [])
+
+
+
 
     // const handleSubmit = (evt) => {
     //     evt.preventDefault()

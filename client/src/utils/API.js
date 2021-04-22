@@ -8,6 +8,9 @@ export default {
   getPet: function() {
     return axios('/api/pet')
   },
+  getPetA: function(id) {
+    return axios(`/api/pet/${id}`)
+  },
   getPets: function(id) {
     return axios("/api/pets/" + id)
   },
@@ -22,5 +25,9 @@ export default {
   },
   likePet: function(likeData) {    
     return axios.put("/api/likePet", likeData)
+  },
+  getUser: function(id) {
+    return axios(`/api/users/${id}`)
   }
+  
 }
