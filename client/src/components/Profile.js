@@ -142,6 +142,15 @@ useEffect(() => {
         API.getPetA(user_id)
         .then((results) => {
             console.log(results)
+            // setPet_Name(results.pet_name)
+            // setZipcode(results.zipcode)
+            // setBirthday(results.birthday)
+            // setGender(results.gender)
+            // setSpecies(results.species)
+            // setTemperment(results.temperment)
+            // setPlaydate(results.playdate)
+            // setPetPic(results.petPic)
+            // setShowImg(false)
         }) 
         .catch((err) => {
           console.log(err)  
@@ -215,7 +224,7 @@ useEffect(() => {
                         <div className="petData">
                             <Form.Group controlId="exampleForm.ControlInput1">
                                 <Form.Label>Pet Name</Form.Label>
-                                <Form.Control name="pet_name" type="input" placeholder="" onChange={handleChange} />
+                                <Form.Control name="pet_name" value={pet_name} type="input" placeholder="" onChange={handleChange} />
                             </Form.Group>
 
                             <Form.Group controlId="exampleForm.ControlInput2">

@@ -14,13 +14,13 @@ router.route("/api/users/:id")
 //     .get(petController.getLikes)
 //     .post(petController.createLikes)
 
+router.route("/api/pet/:id")    
+    .get(petController.getPet)
+
 router.route("/api/pet")    
     .get(petController.getPet)
     .post(petController.createPet)  
     .put(petController.putPet)  
-
-router.route("/api/pet/:id")    
-    .get(petController.getPet)
 
 router.route("/api/pets/:user_id")    
     .get(petController.getPets)

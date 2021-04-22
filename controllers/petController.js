@@ -20,6 +20,7 @@ module.exports = {
     //
     getPet: function(req, res) {
         const { id } = req.params
+        console.log(id)
         db.Pet.find({ id: id })            
           .then(petData => {           
             res.json(petData)
