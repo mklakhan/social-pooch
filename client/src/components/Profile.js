@@ -3,6 +3,15 @@ import { Button, Container, Row, Col, Form } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 import API from "../utils/API.js"
 import "./Profile.css"
+import Cat from "../animalSounds/cat.wav"
+import Dog from "../animalSounds/dog.wav"
+import Fish from "../animalSounds/fish.wav"
+import Goat from "../animalSounds/Goat.mp3"
+import GuineaPig from "../animalSounds/guineapig.wav"
+import Mouse from "../animalSounds/mouse.mp3"
+import Snake from "../animalSounds/snakehiss.mp3"
+import Bird from "../animalSounds/bird.wav"
+import Rabbit from "../animalSounds/rabbit.mp3"
 
 
 export default function Profile() {
@@ -27,6 +36,24 @@ export default function Profile() {
         localStorage.getItem('socialpooch-userId') || ''
     );
 
+    const playAnmlSound = function(anmlSound) {
+        // var audio = new Audio('https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3');
+
+        console.log("in play sound",anmlSound);        
+        var audio = "";
+        if (anmlSound === "Cat") audio = new Audio(Cat);
+        if (anmlSound === "Dog") audio = new Audio(Dog);
+        if (anmlSound === "Fish") audio = new Audio(Fish);
+        if (anmlSound === "Guinea Pig") audio = new Audio(GuineaPig);
+        if (anmlSound === "Hamster") audio = new Audio(GuineaPig);
+        if (anmlSound === "Goat") audio = new Audio(Goat);
+        if (anmlSound === "Mouse") audio = new Audio(Mouse);
+        if (anmlSound === "Snake") audio = new Audio(Snake);
+        if (anmlSound === "Fish") audio = new Audio(Fish); 
+        if (anmlSound === "Bird") audio = new Audio(Bird); 
+        if (anmlSound === "Rabbit") audio = new Audio(Rabbit);         
+        if (audio != "") audio.play();
+      }
 
     //for profile image upload//
     const imgToBase64 = function (img) {
@@ -100,6 +127,8 @@ export default function Profile() {
             default:
                 break;
         }
+
+        playAnmlSound(evt.target.value);
     }
 
     function handleSubmit(e) {
@@ -158,46 +187,6 @@ useEffect(() => {
 }, [])
 
 
-
-
-    // const handleSubmit = (evt) => {
-    //     evt.preventDefault()
-    //     let profile = {
-    //         pet_name,
-    //         zipcode,
-    //         birthday,
-    //         gender,
-    //         species,
-    //         temperment,
-    //         playdate,
-    //         petPic
-    //     }
-
-    //     fetch('http://localhost:3001/api/pet', {
-    //         method: 'POST',
-    //         headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-    //         body: JSON.stringify(profile)
-    //     })
-    //         .then(response => {
-    //             // network failure, request prevented
-    //             if (response.status >= 200 && response.status < 300) {
-    //                 return Promise.resolve(response);
-    //             }
-
-
-    //             return Promise.reject(new Error(response.statusText));
-    //         })
-    //         .then(response => response.json())
-    //         .then(result => {
-    //             console.log(result)
-    //         })
-    //         .catch(error => {
-    //             // common error
-    //             return null;
-    //         });
-
-    //     console.log('profile: ', profile);
-    // }
 
     return (
         <Container>
