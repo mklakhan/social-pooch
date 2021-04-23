@@ -12,6 +12,8 @@ import Mouse from "../animalSounds/mouse.mp3"
 import Snake from "../animalSounds/snakehiss.mp3"
 import Bird from "../animalSounds/bird.wav"
 import Rabbit from "../animalSounds/rabbit.mp3"
+import Turtle from "../animalSounds/turtle.mp3"
+
 
 
 export default function Profile() {
@@ -37,22 +39,21 @@ export default function Profile() {
     );
 
     const playAnmlSound = function(anmlSound) {
-        // var audio = new Audio('https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3');
-
-        console.log("in play sound",anmlSound);        
+      
         var audio = "";
         if (anmlSound === "Cat") audio = new Audio(Cat);
-        if (anmlSound === "Dog") audio = new Audio(Dog);
-        if (anmlSound === "Fish") audio = new Audio(Fish);
-        if (anmlSound === "Guinea Pig") audio = new Audio(GuineaPig);
-        if (anmlSound === "Hamster") audio = new Audio(GuineaPig);
-        if (anmlSound === "Goat") audio = new Audio(Goat);
-        if (anmlSound === "Mouse") audio = new Audio(Mouse);
-        if (anmlSound === "Snake") audio = new Audio(Snake);
-        if (anmlSound === "Fish") audio = new Audio(Fish); 
-        if (anmlSound === "Bird") audio = new Audio(Bird); 
-        if (anmlSound === "Rabbit") audio = new Audio(Rabbit);         
-        if (audio != "") audio.play();
+        else if (anmlSound === "Dog") audio = new Audio(Dog);
+        else if (anmlSound === "Fish") audio = new Audio(Fish);
+        else if (anmlSound === "Guinea Pig") audio = new Audio(GuineaPig);
+        else if (anmlSound === "Hamster") audio = new Audio(GuineaPig);
+        else if (anmlSound === "Goat") audio = new Audio(Goat);
+        else if (anmlSound === "Mouse") audio = new Audio(Mouse);
+        else if (anmlSound === "Snake") audio = new Audio(Snake);
+        else if (anmlSound === "Fish") audio = new Audio(Fish); 
+        else if (anmlSound === "Bird") audio = new Audio(Bird); 
+        else if (anmlSound === "Rabbit") audio = new Audio(Rabbit);   
+        else if (anmlSound === "Turtle") audio = new Audio(Turtle);        
+        if (audio !== "") audio.play();
       }
 
     //for profile image upload//
@@ -185,7 +186,6 @@ useEffect(() => {
         })
     }  
 }, [])
-
 
 
     return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuth } from "../contexts/AuthContext";
-import { Navbar, Nav, FormControl, Button, Container, Row, Col, Form } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import "./Nav.css"
 import {useHistory} from "react-router-dom"
 
