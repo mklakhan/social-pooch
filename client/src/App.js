@@ -15,7 +15,6 @@ import Register from "./pages/Register";
 import Profile from "./components/Profile";
 import { AuthProvider } from "./contexts/AuthContext";
 import Nav from "./components/Nav";
-import Carousel from "./components/Carousel";
 // import ReactDOM from 'react-dom';
 
 
@@ -50,12 +49,6 @@ function App() {
 
 {/* ReactDOM.render(<Carousel />, document.getElementById('app')); */}
             <Switch>
-            <Route exact path="/carousel">
-                <Carousel />
-              </Route>
-
-
-
               <Route exact path="/login" component={Login}>
                 <Login />
               </Route>

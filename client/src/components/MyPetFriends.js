@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import {Button, Container, Row, Col, Form, Card, ListGroup, ListGroupItem} from 'react-bootstrap'
 import PetCard from "./PetCard.js"
 import API from "../utils/API.js"
 
@@ -28,13 +27,7 @@ export default function FindPetFriends() {
         <div className="findPetFriends">
             {pets.map(pet => pet.likes.map(like => (            
                  <PetCard key={like._id} {...like } showLike={false} showDislike={true} />
-            )))}
-
-            {/* {pets.map(pet => (
-
-                <PetCard key={pet._id} {...pet } />
-
-            ))} */}
+            )))}           
         </div>
 
     )

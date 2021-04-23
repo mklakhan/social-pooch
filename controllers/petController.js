@@ -41,7 +41,6 @@ module.exports = {
       getPets: function(req, res) {
         const pet_owner = req.params.user_id
 
-        //db.Pet.find({})
         // find all pets, except yourself
         //
         db.Pet.find({user_id: { $ne: pet_owner }})
