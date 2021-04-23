@@ -1,4 +1,4 @@
-# Project 3 - Social Pooch
+# Project 3 - Social Pooch ![Image of Hearts](client/Hearts-icon.png)
 
 <br>
 
@@ -10,7 +10,7 @@
 
 ## Description 
 
-Pets Remain In High Demand During COVID. An estimated 11 million U.S. households have gotten a new pet during the pandemic.  
+Pets Remain In High Demand During COVID. An estimated 11 million U.S. households have gotten a new pet during the pandemic. 
 We wanted an easy and fun way to  help our pet friends meet other pet friends (with Human plus 1’s tagging along of course). 
 
 As an adorable pet, I want to meet other pet friends so that I can have play dates with them at the park, or anywhere fun! 
