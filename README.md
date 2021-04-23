@@ -6,6 +6,7 @@
 [![Generic badge](https://img.shields.io/badge/Made%20with-JAVASCRIPT-yellow.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/Using-Mongo-green.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/Using-ReactBootstrap-orange.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Authentication-Firebase-red.svg)](https://shields.io/)
 
 ## Description 
 
