@@ -62,7 +62,7 @@ try {
             </Form.Group>
             <Form.Group controlId="formBasicPasswordConfirmation">
             <Form.Label>Confirm Password</Form.Label>
-            <Form.Control type="password confirmation" placeholder="Password Confirmation" ref={passwordConfirmRef} required />
+            <Form.Control type="password" placeholder="Password Confirmation" ref={passwordConfirmRef} required />
             </Form.Group>
             <Button  disabled={loading} variant="primary" type="submit">Submit</Button>
             <div>Already have account?<Link to="/login">Login</Link></div>

@@ -26,10 +26,6 @@ export default function NavComponent(){
                 ? <Nav.Link href="/login" onClick={youGottaCallHooks.logout}>Logout</Nav.Link>
                 :<Nav.Link href="#" onClick={() => go("/login")}>Login</Nav.Link>
               }
-              {/* <Nav.Link href="/register">New Account</Nav.Link> */}
-                {/* <Nav.Link href="/">Login</Nav.Link>
-                <Nav.Link href="/">Logout</Nav.Link> */}
-                
                 <Nav.Link href="#" onClick={() => go("/profile")}>My Profile</Nav.Link>
                 <Nav.Link href="#" onClick={() => go("/findpetfriends")}>Find Pet Friends</Nav.Link>
                 <Nav.Link href="#" onClick={() => go("/mypetfriends")}>My Pet Friends</Nav.Link>
