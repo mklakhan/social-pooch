@@ -41,7 +41,9 @@ function PetCard(props) {
             .then(function (response) {
                 console.log("dislike completed", response)     
                 //history.push("/mypetfriends") 
-                document.location.reload();
+                // document.location.reload();
+
+                props.fetchPets()
             })
             .catch(err => console.log(err))       
         }

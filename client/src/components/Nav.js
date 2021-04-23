@@ -16,12 +16,13 @@ export default function NavComponent(){
   }
  
   const youGottaCallHooks = useAuth()
+  console.log(youGottaCallHooks)
     return(
         <Navbar bg="primary" variant="dark">
               <Navbar.Brand href="/">Social Pooch</Navbar.Brand>
               <Nav className="mr-auto">
                 
-              {youGottaCallHooks.currentUserStr
+              {youGottaCallHooks.currentUser
                 ? <Nav.Link href="/login" onClick={youGottaCallHooks.logout}>Logout</Nav.Link>
                 :<Nav.Link href="#" onClick={() => go("/login")}>Login</Nav.Link>
               }
