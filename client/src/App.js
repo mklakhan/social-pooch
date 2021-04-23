@@ -18,7 +18,7 @@ import Nav from "./components/Nav";
 
 function App() {
   
-  const [isLoggedIn, setIsLoggedIn] = useState(false)  
+  
  
   return (
     
@@ -44,7 +44,6 @@ function App() {
             </Navbar> */}
 
 
-{/* ReactDOM.render(<Carousel />, document.getElementById('app')); */}
             <Switch>
               <Route exact path="/login" component={Login}>
                 <Login />

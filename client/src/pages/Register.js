@@ -43,7 +43,7 @@ try {
 
     return (
         
-    <Container>
+    <Container fluid="sm" className="p-5">
         <Row>
          <Col md={{ span: 6, offset: 3 }}>
           <Form onSubmit={handleSubmit}>
@@ -62,10 +62,10 @@ try {
             </Form.Group>
             <Form.Group controlId="formBasicPasswordConfirmation">
             <Form.Label>Confirm Password</Form.Label>
-            <Form.Control type="password confirmation" placeholder="Password Confirmation" ref={passwordConfirmRef} required />
+            <Form.Control type="password" placeholder="Password Confirmation" ref={passwordConfirmRef} required />
             </Form.Group>
             <Button  disabled={loading} variant="primary" type="submit">Submit</Button>
-            <div>Already have account?<Link to="/login">Login</Link></div>
+            <div>Already have account?<Link to="/login">  Login</Link></div>
            </Form>
         </Col>
       </Row>

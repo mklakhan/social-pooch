@@ -44,7 +44,7 @@ try {
 }
 
     return (
-        <Container>
+        <Container fluid="sm" className="p-5">
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
                     <Form onSubmit={handleLogin}>

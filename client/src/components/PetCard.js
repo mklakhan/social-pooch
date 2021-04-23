@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, ListGroup, ListGroupItem } from 'react-bootstrap'
+import { Button, Container, Row, Col, Form, Card, ListGroup, ListGroupItem, Jumbotron } from 'react-bootstrap'
 import { IoHeartHalf, IoHeartDislike } from "react-icons/io5";
 import API from '../utils/API';
 
@@ -41,15 +41,18 @@ function PetCard(props) {
             .then(function (response) {
                 console.log("dislike completed", response)     
                 //history.push("/mypetfriends") 
-                document.location.reload();
+                // document.location.reload();
+
+                props.fetchPets()
             })
             .catch(err => console.log(err))       
         }
     
     return (
 
-        <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={props.petPic} />
+<Jumbotron fluid className="p-5" >
+<Card style={{ width: '18rem' }}> 
+            <Card.Img variant="top" src={props.petPic} /> 
             <Card.Body>
                 <Card.Title>{props.pet_name}</Card.Title>
                 <Card.Text>{props.playdate}</Card.Text>
@@ -75,6 +78,8 @@ function PetCard(props) {
                 )}
             </Card.Body>
         </Card>
+        </Jumbotron>
+        
     )
 }
 
