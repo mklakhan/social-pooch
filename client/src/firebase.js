@@ -14,6 +14,5 @@ const firebaseConfig = firebase.initializeApp({
 
 })
 
-console.log(process.env)
 export const auth = firebaseConfig.auth()
 export default firebaseConfig

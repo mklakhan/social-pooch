@@ -15,16 +15,22 @@ import Register from "./pages/Register";
 import Profile from "./components/Profile";
 import { AuthProvider } from "./contexts/AuthContext";
 import Nav from "./components/Nav";
+import Carousel from "./components/Carousel";
+// import ReactDOM from 'react-dom';
 
 
 function App() {
+  
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  // ReactDOM.render(<Carousel />, document.getElementById('App'))
+ 
   return (
     
        <AuthProvider>
         <Router>
           <div>
             <Nav />
+            
             {/* <Navbar bg="primary" variant="dark">
               <Navbar.Brand href="/">Social Pooch</Navbar.Brand>
               <Nav className="mr-auto">
@@ -42,8 +48,14 @@ function App() {
             </Navbar> */}
 
 
-
+{/* ReactDOM.render(<Carousel />, document.getElementById('app')); */}
             <Switch>
+            <Route exact path="/carousel">
+                <Carousel />
+              </Route>
+
+
+
               <Route exact path="/login" component={Login}>
                 <Login />
               </Route>

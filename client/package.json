@@ -10,11 +10,13 @@
     "cors": "^2.8.5",
     "firebase": "^8.4.1",
     "mongoose": "^5.12.3",
-    "react": "^16.13.1",
+    "react": "^16.14.0",
     "react-bootstrap": "^1.5.2",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "react-swipe": "^6.0.4",
+    "swipe-js-iso": "^2.1.5"
   },
   "scripts": {
     "start": "react-scripts start",

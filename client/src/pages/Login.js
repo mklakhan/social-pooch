@@ -8,7 +8,7 @@ export default function Login() {
 const emailRef = useRef()
 const passwordRef = useRef()
 
- const useAut = useAuth()
+const useAut = useAuth()
 const [error, setError] = useState('')
 const [loading, setLoading] = useState(false)
 
@@ -33,7 +33,7 @@ try {
     // pass the user id to mypetfriends
 
     history.push({
-        pathname: '/mypetfriends'
+        pathname: '/findpetfriends'
         //state: {userId: userId}
       });
 

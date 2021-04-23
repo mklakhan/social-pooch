@@ -27,7 +27,10 @@
     "if-env": "^1.0.4",
     "mongoose": "^5.12.3",
     "morgan": "^1.10.0",
+    "react": "^17.0.2",
     "react-icons": "^4.2.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "react-swipe": "^6.0.4",
+    "swipe-js-iso": "^2.1.5"
   }
 }
