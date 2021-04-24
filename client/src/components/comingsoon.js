@@ -1,15 +1,4 @@
 import React, { useState, useEffect } from "react";
-import {
-  Button,
-  Container,
-  Row,
-  Col,
-  Form,
-  Card,
-  ListGroup,
-  ListGroupItem,
-} from "react-bootstrap";
-import PetCard from "./PetCard.js";
 import API from "../utils/API.js";
 import MyCarousel from "./MyCarousel";
 
