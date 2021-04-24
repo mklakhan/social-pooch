@@ -26,7 +26,7 @@ export default function NavComponent() {
 
   return (
     <Navbar
-      style={{ backgroundColor: "lightblue", color: "white" }}
+      style={{ backgroundColor: "#FCD739", color: "white" }}
       expand="lg"
     >
       <Navbar.Brand href="/">
@@ -37,7 +37,7 @@ export default function NavComponent() {
           height="30"
           className="d-inline-block align-top"
         />
-        Social Pooch
+      <span style={{color: "white"}} >Social Pooch</span>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -51,17 +51,11 @@ export default function NavComponent() {
               Login
             </Nav.Link>
           )}
-          <Nav.Link
-            style={{ backgroundColor: "lightblue", color: "white" }}
-            href="#"
-            onClick={() => go("/profile")}
+          <Nav.Link href="#"onClick={() => go("/profile")}
           >
             My Profile
           </Nav.Link>
-          <Nav.Link
-            style={{ backgroundColor: "lightblue", color: "white" }}
-            href="#"
-            onClick={() => go("/findpetfriends")}
+          <Nav.Link href="#"onClick={() => go("/findpetfriends")}
           >
             Find Pet Friends
           </Nav.Link>
