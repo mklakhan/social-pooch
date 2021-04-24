@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Button, Container, Row, Col, Form, Card, ListGroup, ListGroupItem, Jumbotron } from 'react-bootstrap'
 import { IoHeartHalf, IoHeartDislike } from "react-icons/io5";
 import API from '../utils/API';
+import './Petcard.css'
 
 
 
@@ -50,20 +51,20 @@ function PetCard(props) {
     
     return (
 
-<Jumbotron fluid className="p-5" >
+<Jumbotron style={{backgroundColor: "lightblue"}} fluid className="p-5" >
 <Card style={{ width: '18rem' }}> 
             <Card.Img variant="top" src={props.petPic} /> 
-            <Card.Body>
-                <Card.Title>{props.pet_name}</Card.Title>
-                <Card.Text>{props.playdate}</Card.Text>
+            <Card.Body style={{backgroundColor: "lightblue"}}>
+                <Card.Title >{props.pet_name}</Card.Title>
+                <Card.Text >{props.playdate}</Card.Text>
             </Card.Body>
             <ListGroup className="list-group-flush">
                 {/* <ListGroupItem>{props._id}</ListGroupItem> */}
-                <ListGroupItem>{props.zipcode}</ListGroupItem>
-                <ListGroupItem>{props.gender}</ListGroupItem>
-                <ListGroupItem>{props.birthday}</ListGroupItem>
-            </ListGroup>
-            <Card.Body>
+                <ListGroupItem style={{backgroundColor: "pink"}}>{props.zipcode}</ListGroupItem>
+                <ListGroupItem style={{backgroundColor: "pink"}}>{props.gender}</ListGroupItem>
+                <ListGroupItem style={{backgroundColor: "pink"}}>{props.birthday}</ListGroupItem>
+            </ListGroup >
+            <Card.Body style={{backgroundColor: "lightblue"}}>
                 {props.showDislike && (
                     <Card.Link 
                         onClick={() => { handleClickDislike( props._id) }}
