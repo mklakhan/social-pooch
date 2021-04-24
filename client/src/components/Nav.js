@@ -13,6 +13,7 @@ import {
 
 import { useHistory } from "react-router-dom";
 import ReactLogo from "../logo.svg";
+
 // import Nav from './Nav.css';
 
 export default function NavComponent() {
@@ -25,14 +26,7 @@ export default function NavComponent() {
   const youGottaCallHooks = useAuth();
 
   return (
-<<<<<<< HEAD
-    <Navbar style={{ backgroundColor: "yellow", color: "white" }} expand="lg">
-=======
-    <Navbar
-      style={{ backgroundColor: "#FCD739", color: "white" }}
-      expand="lg"
-    >
->>>>>>> 05a467442078130acb34465564d016108155aa11
+    <Navbar style={{ backgroundColor: "#FCD739", color: "white" }} expand="lg">
       <Navbar.Brand href="/">
         <img
           src={ReactLogo}
@@ -41,11 +35,24 @@ export default function NavComponent() {
           height="30"
           className="d-inline-block align-top"
         />
-      <span style={{color: "white"}} >Social Pooch</span>
+        <span style={{ color: "black" }}>Social Pooch</span>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
+          <Nav.Link href="#" onClick={() => go("/profile")}>
+            My Profile
+          </Nav.Link>
+          <Nav.Link href="#" onClick={() => go("/findpetfriends")}>
+            Find Pet Friends
+          </Nav.Link>
+          <Nav.Link href="#" onClick={() => go("/mypetfriends")}>
+            My Pet Friends
+          </Nav.Link>
+
+          <Nav.Link href="#" onClick={() => go("/comingsoon")}>
+            Coming Soon!
+          </Nav.Link>
           {youGottaCallHooks.currentUser ? (
             <Nav.Link href="/login" onClick={youGottaCallHooks.logout}>
               Logout
@@ -55,17 +62,6 @@ export default function NavComponent() {
               Login
             </Nav.Link>
           )}
-          <Nav.Link href="#"onClick={() => go("/profile")}
-          >
-            My Profile
-          </Nav.Link>
-          <Nav.Link href="#"onClick={() => go("/findpetfriends")}
-          >
-            Find Pet Friends
-          </Nav.Link>
-          <Nav.Link href="#" onClick={() => go("/mypetfriends")}>
-            My Pet Friends
-          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
