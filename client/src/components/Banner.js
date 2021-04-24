@@ -8,7 +8,7 @@ export default function Banner() {
         <div>      
             <Container fluid style={{ backgroundImage: `url(${socialpoochimg})`, height: "100%", width: "100%"}}>
                 <Image style={{height: "10%", width: "100%"}} src={socialpoochimg} fluid />
-                {/* <div style={{minHeight: "75%", minWidth: "75%"}}></div> */}
+                {/* <div style={{minHeight: "75%", minWidth: "75%zxcvbghjkhgf"}}></div> */}
             </Container>
         </div>
     )
