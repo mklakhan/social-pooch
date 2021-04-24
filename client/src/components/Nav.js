@@ -1,46 +1,101 @@
 import React from "react";
 import { useAuth } from "../contexts/AuthContext";
-import { Navbar, Nav, FormControl, Button, Container, Row, Col, Form } from 'react-bootstrap';
+import {
+  Navbar,
+  Nav,
+  FormControl,
+  Button,
+  Container,
+  Row,
+  Col,
+  Form,
+} from "react-bootstrap";
 
-import {useHistory} from "react-router-dom"
-import ReactLogo from '../logo.svg';
+import { useHistory } from "react-router-dom";
+import ReactLogo from "../logo.svg";
 // import Nav from './Nav.css';
 
-export default function NavComponent(){
+export default function NavComponent() {
+  const history = useHistory();
 
-  const history = useHistory()
+  const go = (newPath) => {
+    history.push(newPath);
+  };
 
-  const go = (newPath) => { 
-    history.push(newPath) }
-   
-  const youGottaCallHooks = useAuth()
-  
-    return(
-        <Navbar bg="warning" variant="light">
-              {/* <Navbar.Brand href="/">Social Pooch</Navbar.Brand> */}
-        <Navbar.Brand href="/login">
-              
-      <img
-        src={ReactLogo} alt="React Logo"
-        width="30"
-        height="30"
-        className="d-inline-block align-top"
-         
-      />
-      <span style={{color: "white"}} >Social Pooch</span>
-    </Navbar.Brand>
-              <Navbar.Collapse className="basic-navbar-nav">
-              <Nav className="mr-auto">
-              {youGottaCallHooks.currentUser
-                ? <Nav.Link href="/login" onClick={youGottaCallHooks.logout}>Logout</Nav.Link>
-                :<Nav.Link href="#" onClick={() => go("/login")}>Login</Nav.Link>
-              }
-                <Nav.Link href="#" onClick={() => go("/profile")}>My Profile</Nav.Link>
-                <Nav.Link href="#" onClick={() => go("/findpetfriends")}>Find Pet Friends</Nav.Link>
-                <Nav.Link href="#" onClick={() => go("/mypetfriends")}>My Pet Friends</Nav.Link>
-        
-              </Nav>
-              </Navbar.Collapse>
-            </Navbar>
-    )
+  const youGottaCallHooks = useAuth();
+
+  return (
+    <Navbar
+      style={{ backgroundColor: "lightblue", color: "white" }}
+      expand="lg"
+    >
+      <Navbar.Brand href="/">
+        <img
+          src={ReactLogo}
+          alt="React Logo"
+          width="30"
+          height="30"
+          className="d-inline-block align-top"
+        />
+        Social Pooch
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          {youGottaCallHooks.currentUser ? (
+            <Nav.Link href="/login" onClick={youGottaCallHooks.logout}>
+              Logout
+            </Nav.Link>
+          ) : (
+            <Nav.Link href="#" onClick={() => go("/login")}>
+              Login
+            </Nav.Link>
+          )}
+          <Nav.Link
+            style={{ backgroundColor: "lightblue", color: "white" }}
+            href="#"
+            onClick={() => go("/profile")}
+          >
+            My Profile
+          </Nav.Link>
+          <Nav.Link
+            style={{ backgroundColor: "lightblue", color: "white" }}
+            href="#"
+            onClick={() => go("/findpetfriends")}
+          >
+            Find Pet Friends
+          </Nav.Link>
+          <Nav.Link href="#" onClick={() => go("/mypetfriends")}>
+            My Pet Friends
+          </Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+    //     <Navbar bg="warning" variant="light">
+    //           {/* <Navbar.Brand href="/">Social Pooch</Navbar.Brand> */}
+    //     <Navbar.Brand href="/login">
+
+    //   <img
+    //     src={ReactLogo} alt="React Logo"
+    //     width="30"
+    //     height="30"
+    //     className="d-inline-block align-top"
+
+    //   />
+    //   <span style={{color: "white"}} >Social Pooch</span>
+    // </Navbar.Brand>
+    //           <Navbar.Collapse className="basic-navbar-nav">
+    //           <Nav className="mr-auto">
+    //           {youGottaCallHooks.currentUser
+    //             ? <Nav.Link href="/login" onClick={youGottaCallHooks.logout}>Logout</Nav.Link>
+    //             :<Nav.Link href="#" onClick={() => go("/login")}>Login</Nav.Link>
+    //           }
+    //             <Nav.Link href="#" onClick={() => go("/profile")}>My Profile</Nav.Link>
+    //             <Nav.Link href="#" onClick={() => go("/findpetfriends")}>Find Pet Friends</Nav.Link>
+    //             <Nav.Link href="#" onClick={() => go("/mypetfriends")}>My Pet Friends</Nav.Link>
+
+    //           </Nav>
+    //           </Navbar.Collapse>
+    //         </Navbar>
+  );
 }
