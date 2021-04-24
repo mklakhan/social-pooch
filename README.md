@@ -1,4 +1,4 @@
-# ![Image of logo](client/logomed.png) align="center"
+# ![Image of logo](client/logomed.png) 
 
 # Project 3 - Social Pooch 
 
