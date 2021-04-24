@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import ReactCardCarousel from "react-card-carousel";
-import Petcard from './PetCard'
-
+import Petcard from "./PetCard";
 
 export default class MyCarousel extends Component {
   static get CONTAINER_STYLE() {
@@ -13,7 +12,7 @@ export default class MyCarousel extends Component {
       display: "flex",
       flex: 1,
       justifyContent: "center",
-      alignItems: "middle"
+      alignItems: "middle",
     };
   }
 
@@ -29,30 +28,30 @@ export default class MyCarousel extends Component {
       fontSize: "12px",
       textTransform: "uppercase",
       borderRadius: "10px",
-      boxSizing: "border-box"
+      boxSizing: "border-box",
     };
   }
 
   render() {
+    console.log(this.props.pets);
     return (
       <div style={MyCarousel.CONTAINER_STYLE}>
         <ReactCardCarousel autoplay={true} autoplay_speed={2500}>
+          {/* <Petcard /> */}
 
-
-
-
-            {/* <Petcard /> */}
-         <Petcard />
-         <Petcard />
-         <Petcard />
-         <Petcard />
-         <Petcard />
-         <Petcard />
-         <Petcard />
-         <Petcard />
-         <Petcard />
-
-
+          {this.props.pets.map((pet) => {
+            return pet.likes.map((like) => {
+              console.log("like", like);
+              return (
+                <Petcard
+                  fetchPets={this.props.fetchPets}
+                  {...like}
+                  showLike={false}
+                  showDislike={true}
+                />
+              );
+            });
+          })}
 
           {/* <div style={MyCarousel.CARD_STYLE}>Second Card</div>
           <div style={MyCarousel.CARD_STYLE}>Third Card</div>
@@ -63,8 +62,6 @@ export default class MyCarousel extends Component {
     );
   }
 }
-
-
 
 // const rootElement = document.getElementById("root");
 // ReactDOM.render(<MyCarousel />, rootElement);

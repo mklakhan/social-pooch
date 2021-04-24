@@ -10,6 +10,7 @@ import Profile from "./components/Profile";
 import { AuthProvider } from "./contexts/AuthContext";
 import Nav from "./components/Nav";
 import MyCarousel from "./components/MyCarousel";
+import ComingSoon from "./components/comingsoon";
 // import ReactDOM from 'react-dom';
 
 function App() {
@@ -18,8 +19,6 @@ function App() {
       <Router>
         <div>
           <Nav />
-
-    
 
           {/* <Navbar bg="primary" variant="dark">
               <Navbar.Brand href="/">Social Pooch</Navbar.Brand>
@@ -53,8 +52,8 @@ function App() {
             <Route path="/findpetfriends">
               <FindPetFriends />
             </Route>
-            <Route path="/mycarousel">
-              <MyCarousel />
+            <Route path="/comingsoon">
+              <ComingSoon />
             </Route>
           </Switch>
         </div>

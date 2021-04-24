@@ -13,7 +13,7 @@ import PetCard from "./PetCard.js";
 import API from "../utils/API.js";
 import MyCarousel from "./MyCarousel";
 
-export default function FindPetFriends() {
+export default function ComingSoon() {
   const [pets, setPets] = useState([]);
   const [user_id, setUserId] = React.useState(
     localStorage.getItem("socialpooch-userId") || ""
@@ -35,7 +35,7 @@ export default function FindPetFriends() {
 
   return (
     <div className="findPetFriends">
-      {pets.map((pet) =>
+      {/* {pets.map((pet) =>
         pet.likes.map((like) => (
           <PetCard
             key={like._id}
@@ -45,14 +45,14 @@ export default function FindPetFriends() {
             fetchPets={fetchPets}
           />
         ))
-      )}
+      )} */}
 
-      {/* <MyCarousel
+      <MyCarousel
         fetchPets={fetchPets}
         showLike={true}
         showDislike={false}
         pets={pets}
-      /> */}
+      />
 
       {/* {pets.map(pet => (
                 <PetCard key={pet._id} {...pet } />
