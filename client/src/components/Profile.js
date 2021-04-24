@@ -269,7 +269,7 @@ useEffect(() => {
                                 <Form.Control name="playdate" as="textarea" rows={3} onChange={handleChange} />
                             </Form.Group>
 
-                            <Button variant="primary" type="submit" onClick={handleSubmit}>
+                            <Button variant="warning" type="submit" onClick={handleSubmit}>
                                 Submit
                         </Button>
                         </div>
