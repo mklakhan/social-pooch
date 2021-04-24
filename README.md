@@ -1,4 +1,6 @@
-# Project 3 - Social Pooch ![Image of Hearts](client/Hearts-icon.png)
+# ![Image of logo](client/logomed.png) 
+
+# Project 3 - Social Pooch 
 
 <br>
 

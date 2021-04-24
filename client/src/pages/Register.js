@@ -64,7 +64,7 @@ try {
             <Form.Label>Confirm Password</Form.Label>
             <Form.Control type="password" placeholder="Password Confirmation" ref={passwordConfirmRef} required />
             </Form.Group>
-            <Button  disabled={loading} variant="primary" type="submit">Submit</Button>
+            <Button  disabled={loading} variant="warning" type="submit">Submit</Button>
             <div>Already have account?<Link to="/login">  Login</Link></div>
            </Form>
         </Col>
