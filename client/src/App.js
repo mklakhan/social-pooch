@@ -21,7 +21,7 @@ function App() {
   
  
   return (
-    
+
        <AuthProvider>
         <Router>
           <div>
@@ -67,6 +67,8 @@ function App() {
         </AuthProvider>
       
   );
+
+
 }
 
 

@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react'
 import {Alert, Button, Container , Row, Col, Form} from 'react-bootstrap'
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import Banner from '../components/Banner'
 
 
 export default function Login() {
@@ -44,6 +45,9 @@ try {
 }
 
     return (
+
+        <>
+        <Banner />
         <Container fluid="sm" className="p-5">
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
@@ -62,7 +66,7 @@ try {
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" placeholder="Password" ref={passwordRef} required />
                         </Form.Group>
-                        <Button  disabled={loading} variant="primary" type="submit">
+                        <Button  disabled={loading} variant="warning" type="submit">
                             Submit
                     </Button>
             <div>Need an account?<Link to="/register">Sign Up</Link></div>
@@ -70,6 +74,7 @@ try {
                 </Col>
             </Row>
         </Container>
-      
+      </>
+
 )
 }

@@ -16,7 +16,7 @@ export default function NavComponent(){
   const youGottaCallHooks = useAuth()
   
     return(
-        <Navbar bg="primary" variant="dark">
+        <Navbar bg="warning" variant="light">
               {/* <Navbar.Brand href="/">Social Pooch</Navbar.Brand> */}
         <Navbar.Brand href="/login">
               
@@ -27,7 +27,7 @@ export default function NavComponent(){
         className="d-inline-block align-top"
          
       />
-      Social Pooch
+      <span style={{color: "white"}} >Social Pooch</span>
     </Navbar.Brand>
               <Navbar.Collapse className="basic-navbar-nav">
               <Nav className="mr-auto">
