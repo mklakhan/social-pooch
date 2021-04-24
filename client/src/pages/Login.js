@@ -69,7 +69,7 @@ try {
                         <Button  disabled={loading} variant="warning" type="submit">
                             Submit
                     </Button>
-            <div>Need an account?<Link to="/register">Sign Up</Link></div>
+            <div>Need an account?<Link to="/register"> Sign Up</Link></div>
                     </Form>
                 </Col>
             </Row>
