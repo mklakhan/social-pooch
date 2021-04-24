@@ -25,10 +25,7 @@ export default function NavComponent() {
   const youGottaCallHooks = useAuth();
 
   return (
-    <Navbar
-      style={{ backgroundColor: "lightblue", color: "white" }}
-      expand="lg"
-    >
+    <Navbar style={{ backgroundColor: "yellow", color: "white" }} expand="lg">
       <Navbar.Brand href="/">
         <img
           src={ReactLogo}
