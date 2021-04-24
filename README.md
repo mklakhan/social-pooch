@@ -1,4 +1,6 @@
-# ![Image of logo](client/logoxs.png) Project 3 - Social Pooch 
+# ![Image of logo](client/logo.png) 
+
+# Project 3 - Social Pooch 
 
 <br>
 
