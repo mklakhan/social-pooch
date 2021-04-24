@@ -1,4 +1,4 @@
-# <div align=”center”> [ Image of logo ](client/logo.png)</div> 
+# <div align=”center”> [ client/logo.png ]</div> 
 
 # Project 3 - Social Pooch 
 
