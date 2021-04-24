@@ -33,7 +33,9 @@ function PetCard(props) {
     API.likePet(likeData)
       .then(function (response) {
         console.log("liked completed", response);
-        props.fetchPets();
+        if (props.fetchPets) {
+          props.fetchPets();
+        }
       })
       .catch((err) => console.log(err));
   }
@@ -53,7 +55,9 @@ function PetCard(props) {
         //history.push("/mypetfriends")
         // document.location.reload();
 
-        props.fetchPets();
+        if (props.fetchPets) {
+          props.fetchPets();
+        }
       })
       .catch((err) => console.log(err));
   }
