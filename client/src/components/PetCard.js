@@ -51,8 +51,18 @@ function PetCard(props) {
     
     return (
 
-<Jumbotron style={{backgroundColor: "lightblue"}} fluid className="p-5" >
-<Card style={{ width: '18rem' }}> 
+
+
+
+
+
+<Card style={{  width:"18rem",   boxShadow: "5px 5px 5px #888888",
+
+
+
+
+       textAlign: 'center',    background: '#52C0F5',    color: '#FFF',    fontSize: '15px',     textTransform: 'uppercase',   borderRadius: '0px'
+}}> 
             <Card.Img variant="top" src={props.petPic} /> 
             <Card.Body style={{backgroundColor: "lightblue"}}>
                 <Card.Title >{props.pet_name}</Card.Title>
@@ -60,9 +70,9 @@ function PetCard(props) {
             </Card.Body>
             <ListGroup className="list-group-flush">
                 {/* <ListGroupItem>{props._id}</ListGroupItem> */}
-                <ListGroupItem style={{backgroundColor: "pink"}}>{props.zipcode}</ListGroupItem>
-                <ListGroupItem style={{backgroundColor: "pink"}}>{props.gender}</ListGroupItem>
-                <ListGroupItem style={{backgroundColor: "pink"}}>{props.birthday}</ListGroupItem>
+                <ListGroupItem style={{backgroundColor: "lightblue"}}>{props.zipcode}</ListGroupItem>
+                <ListGroupItem style={{backgroundColor: "lightblue"}}>{props.gender}</ListGroupItem>
+                <ListGroupItem style={{backgroundColor: "lightblue"}}>{props.birthday}</ListGroupItem>
             </ListGroup >
             <Card.Body style={{backgroundColor: "lightblue"}}>
                 {props.showDislike && (
@@ -79,7 +89,8 @@ function PetCard(props) {
                 )}
             </Card.Body>
         </Card>
-        </Jumbotron>
+       
+     
         
     )
 }
