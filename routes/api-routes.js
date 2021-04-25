@@ -14,8 +14,8 @@ router.route("/api/users/:id")
 //     .get(petController.getLikes)
 //     .post(petController.createLikes)
 
-router.route("/api/pet/:id")    
-    .get(petController.getPet)
+router.route("/api/mypet/:id")    
+    .get(petController.getPetA)
 
 router.route("/api/pet")    
     .get(petController.getPet)

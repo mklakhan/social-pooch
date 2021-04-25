@@ -31,6 +31,19 @@ module.exports = {
           })
       },
 
+    getPetA: function(req, res) {
+        const { id } = req.params
+        console.log(id)
+        db.Pet.find({ user_id: id })            
+          .then(petData => {           
+            res.json(petData)
+          })
+          .catch(err => {
+            console.log(err)
+            res.status(500).send()
+          })
+      },
+
       putPet: function(req,res) {
         // db.Pet.updateOne({id:})
         res.send("testing putPet")

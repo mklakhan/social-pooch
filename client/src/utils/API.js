@@ -9,7 +9,7 @@ export default {
     return axios('/api/pet')
   },
   getPetA: function(id) {
-    return axios(`/api/pet/${id}`)
+    return axios(`/api/mypet/${id}`)
   },
   getPets: function(id) {
     return axios("/api/pets/" + id)

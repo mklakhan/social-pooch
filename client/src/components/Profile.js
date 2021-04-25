@@ -171,6 +171,7 @@ useEffect(() => {
     if (user_id !== null) {
         API.getPetA(user_id)
         .then((results) => {
+            console.log('results: ', results)
             setPet_Name(results.pet_name)
             setZipcode(results.zipcode)
             setBirthday(results.birthday)
@@ -185,7 +186,7 @@ useEffect(() => {
           console.log(err)  
         })
     }  
-}, [])
+}, [pet_name])
 
 
     return (
