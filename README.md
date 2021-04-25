@@ -1,6 +1,4 @@
-# ![Image of logo](client/logomed.png) 
-
-# Project 3 - Social Pooch 
+# ![Image of logo](client/logopawprint.JPG)  Project 3 - Social Pooch 
 
 <br>
 
@@ -59,13 +57,13 @@ You can find the Social Pooch Repo on [GitHub](https://github.com/mklakhan/socia
 ## Development Assignments
 
 
+Kristina Al-Ashqar and Kimberley Heuer
 ```
 Backend Development
-Kristina Al-Ashqar and Kimberley Heuer
     * Folder Structure MVC standard for MERN
     * React
     * Mongo database with Mongoose ORM
-    * API routing and database controllers
+    * API routing and database controllers   
 ```
 
 Aika Kuo and Manpreet Lakhan
@@ -73,4 +71,5 @@ Aika Kuo and Manpreet Lakhan
 Frontend Styling and Authenticaion
     * Firebase
     * React Bootstrap and native Bootstrap
+    * Carousel development
 ```
