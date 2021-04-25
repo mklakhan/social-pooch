@@ -50,7 +50,7 @@ npm run seed
 
 ## Deployment (Heroku)
 
-The project is deployed on [Social Pooch on Heroku](https://secure-fjord-72458.herokuapp.com/)
+The project is deployed on [Social Pooch on Heroku](https://secure-fjord-72458.herokuapp.com/login)
 
 You can find the Social Pooch Repo on [GitHub](https://github.com/mklakhan/social-pooch).
 
