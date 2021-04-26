@@ -28,6 +28,8 @@ export default function Profile() {
     const [playdate, setPlaydate] = useState("")
     const [petPic, setPetPic] = useState("")
     const [showImg, setShowImg] = useState(false)
+    const [isOnUpdate, setIsOnUpdate] = useState(false)
+
 
     //do we need this here?//
     const [profileSettings, setProfileSettings] = useState({
@@ -159,29 +161,47 @@ export default function Profile() {
         }
         console.log("post data", postData);
 
+        if (!isOnUpdate) {
         API.savePet(postData)
             .then(function (response) {
                 console.log("savePet response", response)
                 history.push("/findpetfriends")
             })
             .catch(err => console.log(err))
+        } 
+        else if (isOnUpdate) {
+            API.updatePet(user_id, postData)
+                .then(function (response) {
+                    console.log("savePet response", response);
+                    setIsOnUpdate(false);
+                    history.push("/findpetfriends");
+                })
+        }
     }
 
 useEffect(() => {
-    if (user_id !== null) {
+    if (user_id !== null && !isOnUpdate) {
         API.getPetA(user_id)
         .then((results) => {
             console.log('results: ', results)
-            setPet_Name(results.pet_name)
-            setZipcode(results.zipcode)
-            setBirthday(results.birthday)
-            setGender(results.gender)
-            setSpecies(results.species)
-            setTemperment(results.temperment)
-            setPlaydate(results.playdate)
-            setPetPic(results.petPic)
-            setShowImg(false)
-        }) 
+            return results.data[0]
+        })
+        .then((data) => {
+            if (data === null) {
+                return 1
+            } else {
+                setPet_Name(data.pet_name)
+                setZipcode(data.zipcode)
+                setBirthday(data.birthday)
+                setGender(data.gender)
+                setSpecies(data.species)
+                setTemperment(data.temperment)
+                setPlaydate(data.playdate)
+                setPetPic(data.petPic)
+                setShowImg(false)
+                setIsOnUpdate(true)
+            }
+        })
         .catch((err) => {
           console.log(err)  
         })
@@ -204,7 +224,7 @@ useEffect(() => {
                             <Form.Label
                                 id="file-upload-label">Upload a Profile Picture </Form.Label>
                             <Form.File
-                                name="file-upload-label"
+                                name="file-upload-label" 
                                 //name="petPic" 
                                 id="file-upload"
                                 onChange={handleChange} />
@@ -218,17 +238,17 @@ useEffect(() => {
 
                             <Form.Group controlId="exampleForm.ControlInput2">
                                 <Form.Label>Zipcode</Form.Label>
-                                <Form.Control name="zipcode" type="number" placeholder="" onChange={handleChange} />
+                                <Form.Control name="zipcode" value={zipcode}type="number" placeholder="" onChange={handleChange} />
                             </Form.Group>
 
                             <Form.Group controlId="exampleForm.ControlInput3">
                                 <Form.Label>Birthday</Form.Label>
-                                <Form.Control name="birthday" type="date" placeholder="" onChange={handleChange} />
+                                <Form.Control name="birthday" type="date" value={birthday} placeholder="" onChange={handleChange} />
                             </Form.Group>
 
                             <Form.Group controlId="exampleForm.ControlSelect1">
                                 <Form.Label>Gender</Form.Label>
-                                <Form.Control name="gender" as="select" onChange={handleChange} value={profileSettings.gender}>
+                                <Form.Control name="gender" as="select" onChange={handleChange} value={gender}>
                                     <option>Female</option>
                                     <option>Male</option>
                                     <option>Unknown</option>
@@ -237,7 +257,7 @@ useEffect(() => {
 
                             <Form.Group controlId="exampleForm.ControlSelect2">
                                 <Form.Label>Species</Form.Label>
-                                <Form.Control name="species" as="select" onChange={handleChange} value={profileSettings.species}>
+                                <Form.Control name="species" as="select" onChange={handleChange} value={species}>
                                     <option>Bird</option>
                                     <option>Cat</option>
                                     <option>Dog</option>
@@ -255,7 +275,7 @@ useEffect(() => {
 
                             <Form.Group controlId="exampleForm.ControlSelect3" >
                                 <Form.Label>Temperment</Form.Label>
-                                <Form.Control name="temperment" as="select" multiple onChange={handleChange}>
+                                <Form.Control name="temperment" value={temperment} as="select"  onChange={handleChange}>
                                     <option>Playful</option>
                                     <option>Shy</option>
                                     <option>Energetic</option>
@@ -266,8 +286,8 @@ useEffect(() => {
                             </Form.Group>
 
                             <Form.Group controlId="exampleForm.ControlTextarea1">
-                                <Form.Label>Ideal Playdate</Form.Label>
-                                <Form.Control name="playdate" as="textarea" rows={3} onChange={handleChange} />
+                                <Form.Label>About Me</Form.Label>
+                                <Form.Control name="playdate" value={playdate}as="textarea" rows={3} onChange={handleChange} />
                             </Form.Group>
 
                             <Button variant="warning" type="submit" onClick={handleSubmit}>

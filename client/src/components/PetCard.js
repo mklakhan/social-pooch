@@ -79,19 +79,19 @@ function PetCard(props) {
       <Card.Img variant="top" src={props.petPic} />
       <Card.Body style={{ backgroundColor: "lightblue" }}>
         <Card.Title>{props.pet_name}</Card.Title>
-        <Card.Text>{props.playdate}</Card.Text>
+        <Card.Text>About Me: {props.playdate}</Card.Text>
       </Card.Body>
       <ListGroup className="list-group-flush">
         {/* <ListGroupItem>{props._id}</ListGroupItem> */}
         <ListGroupItem style={{ backgroundColor: "lightblue" }}>
-          {props.zipcode}
+          Zipcode: {props.zipcode}
         </ListGroupItem>
         <ListGroupItem style={{ backgroundColor: "lightblue" }}>
-          {props.gender}
+          {props.gender}, {props.species}, {props.temperment}
         </ListGroupItem>
-        <ListGroupItem style={{ backgroundColor: "lightblue" }}>
+        {/* <ListGroupItem style={{ backgroundColor: "lightblue" }}>
           {props.birthday}
-        </ListGroupItem>
+        </ListGroupItem> */}
       </ListGroup>
       <Card.Body style={{ backgroundColor: "lightblue" }}>
         {props.showDislike && (

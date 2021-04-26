@@ -32,7 +32,10 @@ router.route("/api/dislikePet")
     .put(petController.dislikePet)
 
 router.route("/api/likePet") 
-    .put(petController.likePet)    
+    .put(petController.likePet)  
+    
+router.route("/api/updatePets/:id")
+    .put(petController.updatePet)
      
 
 module.exports = router;

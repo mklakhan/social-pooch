@@ -28,6 +28,9 @@ export default {
   },
   getUser: function(id) {
     return axios(`/api/users/${id}`)
+  },
+  updatePet: function(id, data) {    
+    return axios.put(`/api/updatePets/${id}`, data)
   }
   
 }

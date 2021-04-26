@@ -123,4 +123,21 @@ module.exports = {
           res.status(500).send()
         })       
       },
+
+      updatePet: function (req, res) {
+        const id = req.params.id
+
+    //db.Pet.findById({ pet_owner: req.params.pet_owner })   
+        db.Pet.findOneAndUpdate({ user_id: { $eq: id } }, req.body, {
+          new: true
+        })
+          .then(petData => {
+            console.log("friend pet data: ", petData)
+            res.json(petData)
+          })
+          .catch(err => {
+            console.log(err)
+            res.status(500).send()
+          })
+    }
 }
